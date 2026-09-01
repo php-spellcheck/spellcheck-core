@@ -1,0 +1,8 @@
+<?php
+
+// Deliberately broken: used by PhpFileSourceTest to check that a parse error
+// produces a diagnostic instead of aborting the run.
+class Broken
+{
+    public function missingBrace(
+}

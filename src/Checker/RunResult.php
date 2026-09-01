@@ -1,0 +1,48 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Acme\Spellcheck\Checker;
+
+use Acme\Spellcheck\Model\Diagnostic;
+use Acme\Spellcheck\Model\Misspelling;
+
+/**
+ * @psalm-immutable
+ */
+final class RunResult
+{
+    /**
+     * @param list<Misspelling> $misspellings
+     * @param list<Diagnostic>  $diagnostics
+     * @param list<string>      $outdatedBaselineEntries
+     */
+    public function __construct(
+        public readonly array $misspellings,
+        public readonly array $diagnostics,
+        public readonly RunStatistics $stats,
+        public readonly array $outdatedBaselineEntries = [],
+    ) {
+    }
+
+    public function hasMisspellings(): bool
+    {
+        return [] !== $this->misspellings;
+    }
+
+    public function hasFatalDiagnostic(): bool
+    {
+        foreach ($this->diagnostics as $diagnostic) {
+            if ($diagnostic->isFatal()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function withOutdated(array $fingerprints): self
+    {
+        return new self($this->misspellings, $this->diagnostics, $this->stats, array_values($fingerprints));
+    }
+}

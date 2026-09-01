@@ -1,0 +1,65 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Acme\Spellcheck\Tokenizer;
+
+use Acme\Spellcheck\Model\LineIndex;
+use Acme\Spellcheck\Model\TextFragment;
+use Acme\Spellcheck\Model\TokenizerMode;
+use Acme\Spellcheck\Model\Word;
+use Acme\Spellcheck\Support\Utf8;
+
+/**
+ * Tokenizer for natural language.
+ *
+ * A word starts with a letter and may contain letters, combining marks, and
+ * apostrophes or hyphens only when followed by another letter. This keeps
+ * "dell'utente" and "e-mail" together while never emitting "--".
+ */
+final class ProseTokenizer implements TokenizerInterface
+{
+    private const WORD = '/\p{L}(?:[\p{L}\p{M}]|[\'\x{2019}\-](?=\p{L}))*/u';
+
+    public function __construct(
+        private readonly int $minWordLength = 4,
+    ) {
+    }
+
+    public function supports(TokenizerMode $mode): bool
+    {
+        return \in_array($mode, [TokenizerMode::PROSE, TokenizerMode::DOCBLOCK], true);
+    }
+
+    public function tokenize(TextFragment $fragment): iterable
+    {
+        $subject = $fragment->text;
+
+        preg_match_all(self::WORD, $subject, $matches, \PREG_OFFSET_CAPTURE);
+
+        if ([] === ($matches[0] ?? [])) {
+            return;
+        }
+
+        $ascii = Utf8::isAscii($subject);
+        $offsets = $fragment->getOffsets();
+        $lines = new LineIndex($subject);
+
+        /** @var array{0: string, 1: int} $match */
+        foreach ($matches[0] as $match) {
+            [$token, $byteOffset] = $match;
+
+            if (mb_strlen($token) < $this->minWordLength) {
+                continue;
+            }
+
+            $charOffset = Utf8::byteToCharOffset($subject, $byteOffset, $ascii);
+
+            yield new Word(
+                $token,
+                $offsets->translate($charOffset),
+                $lines->lineAt($charOffset),
+            );
+        }
+    }
+}

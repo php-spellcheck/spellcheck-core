@@ -10,11 +10,11 @@ declare(strict_types=1);
  */
 
 spl_autoload_register(static function (string $class): void {
-    if (!str_starts_with($class, '\PHPSpellcheck\Core\\')) {
+    if (!str_starts_with($class, 'PHPSpellcheck\\Core\\')) {
         return;
     }
 
-    $relative = substr($class, \strlen('\PHPSpellcheck\Core\\'));
+    $relative = substr($class, \strlen('PHPSpellcheck\\Core\\'));
     $path = __DIR__.'/../src/'.str_replace('\\', '/', $relative).'.php';
 
     if (is_file($path)) {

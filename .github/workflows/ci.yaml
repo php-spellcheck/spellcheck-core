@@ -1,0 +1,78 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    tests:
+        name: PHP ${{ matrix.php }} / ${{ matrix.deps }}${{ matrix.parser && ' / php-parser ' || '' }}${{ matrix.parser }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - { php: '8.1', deps: lowest }
+                    - { php: '8.1', deps: highest }
+                    - { php: '8.2', deps: highest }
+                    - { php: '8.3', deps: highest }
+                    - { php: '8.4', deps: highest }
+                    - { php: '8.3', deps: highest, parser: '^4.18' }
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install the spell checking backends
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y --no-install-recommends \
+                      hunspell hunspell-it hunspell-en-us hunspell-de-de \
+                      aspell aspell-it aspell-en libpspell-dev
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: mbstring, pspell
+                  coverage: none
+                  ini-values: memory_limit=-1
+
+            - name: Pin php-parser
+              if: matrix.parser
+              run: composer require --no-update --no-interaction nikic/php-parser:${{ matrix.parser }}
+
+            - uses: ramsey/composer-install@v3
+              with:
+                  dependency-versions: ${{ matrix.deps }}
+
+            - name: Sanity check without dependencies
+              run: php packages/spellcheck/tests/smoke.php
+
+            - name: Unit and functional tests
+              run: vendor/bin/phpunit
+
+            - name: Integration tests against the real binaries
+              run: vendor/bin/phpunit --group integration
+
+    static:
+        name: Static analysis and coding standard
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.3'
+                  extensions: mbstring
+                  coverage: none
+                  ini-values: memory_limit=-1
+
+            - uses: ramsey/composer-install@v3
+
+            - run: vendor/bin/phpstan analyse --error-format=github --no-progress
+
+            - run: vendor/bin/php-cs-fixer fix --dry-run --diff --using-cache=no

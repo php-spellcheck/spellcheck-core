@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spellcheck;
+namespace PHPSpellcheck\Core;
 
 final class Version
 {

@@ -99,7 +99,7 @@ final class SpellcheckRunnerTest extends TestCase
     {
         $original = 'Ciao %name%, hai %count% messagi';
 
-        $result = $this->run([$this->translation($original, 'inbox.count', 12)]);
+        $result = $this->doRun([$this->translation($original, 'inbox.count', 12)]);
 
         self::assertCount(1, $result->misspellings);
         self::assertSame('messagi', $result->misspellings[0]->word);
@@ -116,14 +116,14 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testHtmlMarkupIsIgnored(): void
     {
-        $result = $this->run([$this->translation('<a href="/x" class="btn">Clicca qui</a>', 'cta')]);
+        $result = $this->doRun([$this->translation('<a href="/x" class="btn">Clicca qui</a>', 'cta')]);
 
         self::assertSame([], $this->words($result->misspellings));
     }
 
     public function testIcuBranchesAreCheckedAndKeywordsAreNot(): void
     {
-        $result = $this->run([
+        $result = $this->doRun([
             $this->translation('{n, plural, one {Hai una mela} other {Hai # mele}}', 'apples'),
         ]);
 
@@ -132,7 +132,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testLegacyPluralIntervalsAreStripped(): void
     {
-        $result = $this->run([
+        $result = $this->doRun([
             $this->translation('{0} Nessuno|]0,1] Uno|]1,Inf] %count% elementi', 'items'),
         ]);
 
@@ -141,7 +141,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testMalformedIcuProducesADiagnosticNotAnException(): void
     {
-        $result = $this->run([$this->translation('{n, plural, one {Hai una mela', 'broken')]);
+        $result = $this->doRun([$this->translation('{n, plural, one {Hai una mela', 'broken')]);
 
         self::assertSame([], $result->misspellings);
         self::assertCount(1, $result->diagnostics);
@@ -150,7 +150,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testIdentifierSuggestionsKeepTheParentShape(): void
     {
-        $result = $this->run([
+        $result = $this->doRun([
             new TextFragment(
                 'OrderSuscriber',
                 'en',
@@ -167,7 +167,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testResultsAreSortedByPathThenLine(): void
     {
-        $result = $this->run([
+        $result = $this->doRun([
             $this->translation('hai messagi', 'b', 30),
             $this->translation('Inserisci il tuo indirizio', 'a', 12),
             new TextFragment(
@@ -204,7 +204,7 @@ final class SpellcheckRunnerTest extends TestCase
     {
         $fragments = [$this->translation('hai messagi', 'b'), $this->translation('Inserisci il tuo indirizio', 'a')];
 
-        $first = $this->run($fragments);
+        $first = $this->doRun($fragments);
         self::assertCount(2, $first->misspellings);
 
         $baseline = Baseline::fromMisspellings($first->misspellings, 'hash');
@@ -217,7 +217,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testBaselineEntriesNoLongerReproducedAreReportedAsOutdated(): void
     {
-        $baseline = Baseline::fromMisspellings($this->run([$this->translation('hai messagi', 'b')])->misspellings);
+        $baseline = Baseline::fromMisspellings($this->doRun([$this->translation('hai messagi', 'b')])->misspellings);
 
         $result = $this->runner->run([new ArrayFragmentSource([])], $this->config, $baseline);
 
@@ -226,7 +226,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testTheSameWordAcrossManyFragmentsIsReportedOncePerContext(): void
     {
-        $result = $this->run([
+        $result = $this->doRun([
             $this->translation('hai messagi', 'a'),
             $this->translation('hai messagi', 'a'),
             $this->translation('hai messagi', 'b'),
@@ -237,7 +237,7 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testStatisticsAreCollected(): void
     {
-        $result = $this->run([$this->translation('Ciao %name%, hai %count% messagi', 'k')]);
+        $result = $this->doRun([$this->translation('Ciao %name%, hai %count% messagi', 'k')]);
 
         self::assertSame(1, $result->stats->fragments);
         self::assertGreaterThan(0, $result->stats->wordsChecked);
@@ -246,20 +246,20 @@ final class SpellcheckRunnerTest extends TestCase
 
     public function testExitCodes(): void
     {
-        $withIssues = $this->run([$this->translation('hai messagi', 'k')]);
+        $withIssues = $this->doRun([$this->translation('hai messagi', 'k')]);
         self::assertSame(ExitCodeCalculator::ISSUES_FOUND, ExitCodeCalculator::calculate($withIssues, $this->config));
 
-        $clean = $this->run([$this->translation('hai messaggi', 'k')]);
+        $clean = $this->doRun([$this->translation('hai messaggi', 'k')]);
         self::assertSame(ExitCodeCalculator::SUCCESS, ExitCodeCalculator::calculate($clean, $this->config));
 
-        $warned = $this->run([$this->translation('{n, plural, one {rotto', 'k')]);
+        $warned = $this->doRun([$this->translation('{n, plural, one {rotto', 'k')]);
         self::assertSame(ExitCodeCalculator::WARNINGS_ONLY, ExitCodeCalculator::calculate($warned, $this->config));
     }
 
     /**
      * @param list<TextFragment> $fragments
      */
-    private function run(array $fragments): \PHPSpellcheck\Core\Checker\RunResult
+    private function doRun(array $fragments): \PHPSpellcheck\Core\Checker\RunResult
     {
         return $this->runner->run([new ArrayFragmentSource($fragments)], $this->config);
     }

@@ -1,0 +1,18 @@
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+            args:
+                PHP_VERSION: '${PHP_VERSION:-8.3}'
+        user: "${UID}"
+        volumes:
+            - .:/app
+            - composer-cache:/root/.composer/cache
+        working_dir: /app
+        environment:
+            COMPOSER_MEMORY_LIMIT: '-1'
+        tty: true
+
+volumes:
+    composer-cache:

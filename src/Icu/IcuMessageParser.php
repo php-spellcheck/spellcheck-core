@@ -252,6 +252,13 @@ final class IcuMessageParser
                 continue;
             }
 
+            $tokens = preg_split('/\s+/', $selector, -1, PREG_SPLIT_NO_EMPTY);
+            $expectedTokens = str_starts_with($selector, 'offset:') ? 2 : 1;
+
+            if (\count($tokens) !== $expectedTokens) {
+                throw new IcuSyntaxException(sprintf('Expected "{" after selector "%s".', $selector));
+            }
+
             if ($this->pos >= $this->length || '{' !== $this->chars[$this->pos]) {
                 throw new IcuSyntaxException(sprintf('Expected "{" after selector "%s".', $selector));
             }

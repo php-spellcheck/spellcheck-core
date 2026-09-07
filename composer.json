@@ -17,7 +17,8 @@
         "symfony/process": "^5.4 || ^6.4 || ^7.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.11",
+        "phpstan/phpstan": "^2.2",
+        "friendsofphp/php-cs-fixer": "^v3",
         "phpunit/phpunit": "^9.6",
         "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
         "symfony/yaml": "^5.4 || ^6.4 || ^7.0"

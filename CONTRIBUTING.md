@@ -3,7 +3,7 @@
 ## Getting started
 
 ```bash
-git clone <this repository> && cd spellcheck-monorepo
+git clone https://github.com/php-spellcheck/spellcheck-core.git && cd spellcheck-core
 make build install
 make test
 ```
@@ -37,15 +37,16 @@ make test-all
 
 ## Adding a processor
 
-1. Implement `TextProcessorInterface` in `packages/spellcheck/src/Processor`.
+1. Implement `TextProcessorInterface` in `src/Processor`.
 2. Pick a priority and document why it sits where it sits relative to its
    neighbours; the ICU processor must see braces before the placeholder one eats
    them.
 3. Use `OffsetMapBuilder`: `keep()` what survives, `emit(' ')` in place of what
    is removed, so words never get glued together.
 4. Write a test asserting **both** the resulting text and the translated offset.
-5. Register it in `packages/spellcheck-bundle/config/services.php` with the
-   `acme_spellcheck.processor` tag.
+5. Outside Symfony, pass it to the `ProcessorChain`. In the bundle
+   ([`php-spellcheck/spellcheck-symfony-bundle`](https://github.com/php-spellcheck/spellcheck-symfony-bundle))
+   it is autoconfigured through the `php_spellcheck.processor` tag.
 
 Careful with regex delimiters: PHP looks for the closing delimiter before it
 knows about the `x` modifier, so a `/` or a `#` inside an extended-mode comment
@@ -55,11 +56,11 @@ silently truncates the pattern. Use `~` and put the explanation in the docblock.
 
 1. Implement `SpellerInterface`, or extend `PipeSpeller` if the tool speaks the
    Ispell `-a` protocol.
-2. Add it to the chain in `services.php` and to the `backend` enum in
-   `Configuration`.
+2. Add it to `ChainSpeller`, and to the `backend` enum in the bundle
+   `Configuration` if it should be selectable from the bundle.
 3. Write a unit test against a fake process (see
-   `packages/spellcheck/tests/Fixtures/fake-speller.php`) and an integration
-   test marked `@group integration` for the real binary.
+   `tests/Fixtures/fake-speller.php`) and an integration test marked
+   `@group integration` for the real binary.
 4. A backend that sends text over the network must not be selectable by `auto`
    and must emit a diagnostic on every run.
 
@@ -71,9 +72,13 @@ changing either turns every suppressed issue into a false negative.
 
 ## Releasing
 
+1. Bump `PHPSpellcheck\Core\Version` and move the `[Unreleased]` changelog
+   entries under the new version.
+2. Tag and push:
+
 ```bash
 make release VERSION=1.0.0
 ```
 
-monorepo-builder bumps the versions and tags; the split workflow pushes the
-subtrees to the per-package repositories, which is what Packagist watches.
+Packagist watches the repository through a webhook and picks up the new tag,
+so a version only becomes installable once it is tagged.

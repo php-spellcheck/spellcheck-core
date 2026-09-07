@@ -1,0 +1,44 @@
+name: Feature request
+description: A new processor, tokenizer, backend, reporter or dictionary
+labels: ["enhancement"]
+body:
+    - type: dropdown
+      id: extension_point
+      attributes:
+          label: Which extension point
+          options:
+              - Source
+              - Processor
+              - Tokenizer
+              - Speller (backend)
+              - Filter
+              - Reporter
+              - Dictionary
+              - Other / not sure
+      validations:
+          required: true
+
+    - type: textarea
+      id: problem
+      attributes:
+          label: The problem
+          description: What is reported today that should not be, or not reported that should be?
+      validations:
+          required: true
+
+    - type: textarea
+      id: proposal
+      attributes:
+          label: Proposed behaviour
+          description: Input, expected output, and the position expected for it.
+      validations:
+          required: true
+
+    - type: checkboxes
+      id: constraints
+      attributes:
+          label: Constraints
+          options:
+              - label: The change keeps offsets character-accurate
+              - label: The change keeps two identical runs byte-identical
+              - label: The change does not accumulate every fragment in memory

@@ -1,15 +1,71 @@
-# php-spellcheck/spellcheck
+# PHP Spellcheck Core — spell checker for PHP code and translation files
 
-Spell checking engine for PHP code and translation catalogues.
+[![CI](https://github.com/php-spellcheck/spellcheck-core/actions/workflows/ci.yaml/badge.svg)](https://github.com/php-spellcheck/spellcheck-core/actions/workflows/ci.yaml)
+[![Latest version](https://img.shields.io/packagist/v/php-spellcheck/spellcheck-core.svg)](https://packagist.org/packages/php-spellcheck/spellcheck-core)
+[![Downloads](https://img.shields.io/packagist/dt/php-spellcheck/spellcheck-core.svg)](https://packagist.org/packages/php-spellcheck/spellcheck-core)
+[![PHP version](https://img.shields.io/packagist/dependency-v/php-spellcheck/spellcheck-core/php.svg)](https://packagist.org/packages/php-spellcheck/spellcheck-core)
+[![License](https://img.shields.io/packagist/l/php-spellcheck/spellcheck-core.svg)](LICENSE)
 
-This is the framework agnostic core. For the Symfony integration (commands,
-configuration, Translator support) use
-[`php-spellcheck/spellcheck`](https://github.com/php-spellcheck/spellcheck-bundle).
+**Framework-agnostic PHP spell checking engine for source code and translation
+catalogues.** It finds typos in PHP identifiers, docblocks, comments and in
+Symfony translation catalogues, with Hunspell, Aspell, pspell or a pure PHP
+backend, character-accurate line and column positions, ICU MessageFormat
+support, a baseline for legacy projects and PSR-6 caching.
 
-- PHP ≥ 8.1
-- No mandatory `ext-intl` (the ICU parser is built in)
-- Works without any system binary, through the pure PHP `wordlist` backend
+Use it to fail CI on typos, to lint a translation catalogue in the language it
+is actually written in, or to build your own spell checking tool on top of the
+pipeline.
+
+For the Symfony integration (console commands, bundle configuration,
+`Translator` support) use
+[`php-spellcheck/spellcheck-symfony-bundle`](https://github.com/php-spellcheck/spellcheck-symfony-bundle).
+
+## Features
+
+- **Spell check PHP source code** — class, method, property, variable,
+  constant and function names are split on camelCase, snake_case,
+  SCREAMING_SNAKE and acronyms before being checked.
+- **Spell check translation catalogues per locale** — each message is checked
+  in the language of its own catalogue, so `messages.it.yaml` is checked in
+  Italian and `messages.de.yaml` in German. Keys are resolved back to file and
+  line in YAML, XLIFF and PHP array files.
+- **ICU MessageFormat aware** — a built-in recursive descent parser walks
+  `plural`, `select` and `selectordinal` branches. No `ext-intl` required.
+- **Placeholders are never reported** — `%count%`, `{{ var }}`, `{name}`,
+  `:attribute`, `sprintf` directives, HTML tags, Markdown syntax, URLs and
+  docblock tags are stripped before the words reach the speller.
+- **Character-accurate positions** — every reported misspelling points at the
+  line and column in the *original* file, not in the cleaned-up text.
+- **Five backends** — Hunspell and Aspell over the Ispell pipe protocol,
+  `ext-pspell`, a dependency-free pure PHP word list, or an automatic chain.
+- **Baseline for legacy projects** — suppress the existing typos with a
+  line-shift resistant fingerprint and fail only on the new ones.
+- **Seven report formats** — table, JSON, GitHub Actions annotations,
+  Checkstyle, JUnit, GitLab Code Quality and CSV.
+- **Custom and built-in dictionaries** — technical, PHP and Symfony word lists
+  ship with the package; add your own per project or per locale.
+- **Flat memory usage** — the whole pipeline is lazy, so a repository with
+  thousands of files costs the same as one file.
+
+## Requirements
+
+- PHP ≥ 8.1 with `ext-mbstring`
 - `nikic/php-parser` 4 or 5
+- No mandatory `ext-intl` (the ICU parser is built in)
+- No mandatory system binary (the pure PHP `wordlist` backend always works)
+
+## Table of contents
+
+- [Why another spell checker](#why)
+- [Related packages](#related-packages)
+- [Install](#install)
+- [Quick start](#quick-start)
+- [Architecture](#architecture)
+- [Extending](#extending)
+- [Tests](#tests)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [License](#license)
 
 ## Why
 
@@ -19,6 +75,23 @@ branches. `tigitz/php-spellchecker` is an excellent backend abstraction but
 knows nothing about the domain. This library is the missing middle layer: it
 turns catalogues and PHP identifiers into checkable text, accurately, and hands
 the words to whichever backend you have.
+
+| | php-spellcheck/spellcheck-core | cspell | tigitz/php-spellchecker |
+|---|---|---|---|
+| Per-locale translation catalogues | yes | no | no |
+| ICU MessageFormat branches | yes | no | no |
+| Symfony/Twig/`sprintf` placeholder awareness | yes | partial | no |
+| PHP identifier splitting from the AST | yes | no | no |
+| Positions mapped back to the original text | yes | n/a | no |
+| Baseline for legacy projects | yes | no | no |
+| Runs without Node.js | yes | no | yes |
+
+## Related packages
+
+| Package | Purpose |
+|---|---|
+| [`php-spellcheck/spellcheck-core`](https://github.com/php-spellcheck/spellcheck-core) | This package: the framework-agnostic engine. |
+| [`php-spellcheck/spellcheck-symfony-bundle`](https://github.com/php-spellcheck/spellcheck-symfony-bundle) | Symfony bundle: console commands, configuration, `Translator` integration. |
 
 ## Install
 
@@ -151,6 +224,17 @@ php tests/smoke.php                     # dependency free sanity check
 `tests/smoke.php` runs a subset of the suite with a hand written autoloader and
 no composer at all: useful to verify a checkout in a bare container.
 
+## Contributing
+
+Bug reports, feature requests and pull requests are welcome. Read
+[CONTRIBUTING.md](CONTRIBUTING.md) first: the offset and determinism rules are
+not negotiable.
+
+## Security
+
+Report vulnerabilities as described in [SECURITY.md](SECURITY.md). Do not open
+a public issue for them.
+
 ## License
 
-MIT.
+Released under the [MIT License](LICENSE).

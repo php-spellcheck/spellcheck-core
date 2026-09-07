@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-07
+
 ### Added
 
 - `SpellcheckRunner`: generator based pipeline, batching per language, explicit
@@ -30,3 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Fingerprint::SCHEMA_VERSION` is `v1` and `BaselineStorage::SCHEMA` is `1`.
   Changing either requires a major release and a baseline regeneration.
+
+[Unreleased]: https://github.com/php-spellcheck/spellcheck-core/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/php-spellcheck/spellcheck-core/releases/tag/v1.0.0

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Symfony integration
+      url: https://github.com/php-spellcheck/spellcheck-symfony-bundle/issues
+      about: Console commands, bundle configuration and Translator support live in the bundle repository.
+    - name: Questions and ideas
+      url: https://github.com/php-spellcheck/spellcheck-core/discussions
+      about: Ask how to compose the pipeline, or propose an idea before opening an issue.

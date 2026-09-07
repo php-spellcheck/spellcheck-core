@@ -2,7 +2,7 @@ DOCKER ?= docker compose run -v $(PWD):/app -w /app --rm php
 PHP    ?= php
 
 .DEFAULT_GOAL := help
-.PHONY: help build install test test-integration test-all stan cs cs-fix smoke shell validate merge release clean
+.PHONY: help build install test test-integration test-all stan cs cs-fix smoke shell validate release clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
@@ -33,16 +33,17 @@ cs-fix: ## Fix the coding standard
 smoke: ## Dependency free sanity check of the engine
 	$(DOCKER) $(PHP) tests/smoke.php
 
-merge: ## Sync the package composer.json files with the root one
-	$(DOCKER) vendor/bin/monorepo-builder merge
+validate: ## Validate composer.json
+	$(DOCKER) composer validate --strict
 
-release: ## Release a version: make release VERSION=1.0.0
+release: ## Tag a version: make release VERSION=1.0.0
 	@test -n "$(VERSION)" || (echo "VERSION is required, e.g. make release VERSION=1.0.0" && exit 1)
-	$(DOCKER) vendor/bin/monorepo-builder release $(VERSION)
+	@git diff --quiet || (echo "The working tree is dirty" && exit 1)
+	git tag -a v$(VERSION) -m "Release $(VERSION)"
+	git push origin v$(VERSION)
 
 shell: ## Open a shell in the container
 	$(DOCKER) bash
 
 clean: ## Remove caches and generated files
 	rm -rf vendor .phpunit.cache .php-cs-fixer.cache build
-	rm -rf packages/spellcheck-bundle/tests/Fixtures/var

@@ -2,7 +2,20 @@
     "name": "php-spellcheck/spellcheck-core",
     "description": "Framework-agnostic PHP spell checking engine for source code and translation files. Hunspell, Aspell, pspell or pure PHP backends, character-accurate positions, PSR-6 caching.",
     "type": "library",
-    "keywords": ["psr-6", "php-parser", "spell-checker", "spellcheck", "spelling", "php", "hunspell", "aspell", "translations", "i18n", "l10n", "code-quality", "static-analysis", "linter", "typo", "icu", "continuous-integration", "developer-tools"],
+    "keywords": [
+        "spellcheck", "spell-check", "spell-checker", "spelling", "typo", "typos",
+        "php", "hunspell", "aspell", "pspell", "ispell", "dictionary",
+        "translations", "translation", "i18n", "l10n", "icu", "messageformat",
+        "yaml", "xliff", "symfony", "php-parser", "psr-6",
+        "code-quality", "static-analysis", "linter", "lint",
+        "continuous-integration", "developer-tools"
+    ],
+    "homepage": "https://github.com/php-spellcheck/spellcheck-core",
+    "support": {
+        "issues": "https://github.com/php-spellcheck/spellcheck-core/issues",
+        "source": "https://github.com/php-spellcheck/spellcheck-core",
+        "docs": "https://github.com/php-spellcheck/spellcheck-core#readme"
+    },
     "license": "MIT",
     "authors": [
         { "name": "Raffaele Carelle", "email": "raffaele.carelle@gmail.com" }
@@ -25,7 +38,7 @@
     },
     "suggest": {
         "ext-pspell": "To use the pspell backend without spawning external processes",
-        "symfony/translation": "To check Symfony translation catalogues (see php-spellcheck/spellcheck-bundle)"
+        "symfony/translation": "To check Symfony translation catalogues (see php-spellcheck/spellcheck-symfony-bundle)"
     },
     "autoload": {
         "psr-4": { "PHPSpellcheck\\Core\\": "src/" }
@@ -37,7 +50,7 @@
         "sort-packages": true
     },
     "extra": {
-        "branch-alias": { "dev-main": "1.0-dev" }
+        "branch-alias": { "dev-main": "1.1-dev" }
     },
     "minimum-stability": "stable",
     "prefer-stable": true

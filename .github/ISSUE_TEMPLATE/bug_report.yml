@@ -1,0 +1,65 @@
+name: Bug report
+description: A misspelling reported wrongly, a wrong position, a crash or a diagnostic that should not happen
+labels: ["bug"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for the report. Before filing, please check that the problem is
+              in this package and not in the Symfony bundle
+              (`php-spellcheck/spellcheck-symfony-bundle`) or in the spell checking
+              binary itself.
+
+    - type: input
+      id: version
+      attributes:
+          label: Package version
+          placeholder: 1.0.0 or dev-main@abcdef
+      validations:
+          required: true
+
+    - type: input
+      id: php
+      attributes:
+          label: PHP version
+          placeholder: 8.3.10
+      validations:
+          required: true
+
+    - type: dropdown
+      id: backend
+      attributes:
+          label: Backend
+          options:
+              - hunspell
+              - aspell
+              - pspell
+              - wordlist
+              - chain / auto
+              - not relevant
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected
+      attributes:
+          label: What you expected
+      validations:
+          required: true
+
+    - type: textarea
+      id: actual
+      attributes:
+          label: What happened instead
+          description: Include the reported word, file, line and column when relevant.
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproducer
+      attributes:
+          label: Reproducer
+          description: The smallest snippet, translation message or PHP file that shows the problem.
+          render: php
+      validations:
+          required: true

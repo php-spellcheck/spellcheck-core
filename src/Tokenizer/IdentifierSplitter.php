@@ -45,7 +45,7 @@ final class IdentifierSplitter implements TokenizerInterface
         $subject = $fragment->text;
 
         if (1 !== preg_match_all(self::PATTERN, $subject, $matches, \PREG_OFFSET_CAPTURE)
-            && [] === ($matches[0] ?? [])
+            && [] === $matches[0]
         ) {
             return;
         }
@@ -53,7 +53,6 @@ final class IdentifierSplitter implements TokenizerInterface
         $ascii = Utf8::isAscii($subject);
         $offsets = $fragment->getOffsets();
 
-        /** @var array{0: string, 1: int} $match */
         foreach ($matches[0] as $match) {
             [$token, $byteOffset] = $match;
 
@@ -77,7 +76,7 @@ final class IdentifierSplitter implements TokenizerInterface
     {
         preg_match_all(self::PATTERN, $identifier, $matches);
 
-        return array_values($matches[0]);
+        return $matches[0];
     }
 
     private function isCandidate(string $token): bool

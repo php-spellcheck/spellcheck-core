@@ -25,8 +25,8 @@ final class DeduplicationFilter implements MisspellingFilterInterface
     {
         $key = implode('|', [
             $misspelling->fingerprint(),
-            $misspelling->location?->line ?? '',
-            $misspelling->location?->column ?? '',
+            $misspelling->location->line ?? '',
+            $misspelling->location->column ?? '',
         ]);
 
         if (isset($this->seen[$key])) {

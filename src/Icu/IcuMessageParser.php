@@ -56,7 +56,7 @@ final class IcuMessageParser
         $this->parseMessage(false, false);
 
         if ($this->pos < $this->length) {
-            throw new IcuSyntaxException(sprintf('Unexpected "}" at offset %d.', $this->pos));
+            throw new IcuSyntaxException(\sprintf('Unexpected "}" at offset %d.', $this->pos));
         }
 
         return $this->spans;
@@ -103,7 +103,7 @@ final class IcuMessageParser
 
             if ('}' === $char) {
                 if (!$nested) {
-                    throw new IcuSyntaxException(sprintf('Unexpected "}" at offset %d.', $this->pos));
+                    throw new IcuSyntaxException(\sprintf('Unexpected "}" at offset %d.', $this->pos));
                 }
 
                 $this->flush($buffer, $bufferStart);
@@ -252,15 +252,15 @@ final class IcuMessageParser
                 continue;
             }
 
-            $tokens = preg_split('/\s+/', $selector, -1, PREG_SPLIT_NO_EMPTY);
+            $tokens = preg_split('/\s+/', $selector, -1, \PREG_SPLIT_NO_EMPTY) ?: [];
             $expectedTokens = str_starts_with($selector, 'offset:') ? 2 : 1;
 
             if (\count($tokens) !== $expectedTokens) {
-                throw new IcuSyntaxException(sprintf('Expected "{" after selector "%s".', $selector));
+                throw new IcuSyntaxException(\sprintf('Expected "{" after selector "%s".', $selector));
             }
 
             if ($this->pos >= $this->length || '{' !== $this->chars[$this->pos]) {
-                throw new IcuSyntaxException(sprintf('Expected "{" after selector "%s".', $selector));
+                throw new IcuSyntaxException(\sprintf('Expected "{" after selector "%s".', $selector));
             }
 
             ++$this->pos; // '{'

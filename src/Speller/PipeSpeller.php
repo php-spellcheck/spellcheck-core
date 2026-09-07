@@ -170,12 +170,7 @@ abstract class PipeSpeller implements SpellerInterface
             $error = $process->getErrorOutput();
             $this->stop();
 
-            throw new SpellerProcessException(sprintf(
-                'The "%s" backend did not emit its banner. Command: %s. Stderr: %s',
-                $this->getName(),
-                implode(' ', $command),
-                '' !== $error ? trim($error) : '(empty)',
-            ));
+            throw new SpellerProcessException(\sprintf('The "%s" backend did not emit its banner. Command: %s. Stderr: %s', $this->getName(), implode(' ', $command), '' !== $error ? trim($error) : '(empty)'));
         }
 
         if ($this->terseMode) {
@@ -248,21 +243,11 @@ abstract class PipeSpeller implements SpellerInterface
             if (!$this->process->isRunning()) {
                 $this->buffer .= $this->process->getIncrementalOutput();
 
-                throw new SpellerProcessException(sprintf(
-                    'The "%s" process died (exit code %s). Stderr: %s',
-                    $this->getName(),
-                    var_export($this->process->getExitCode(), true),
-                    trim($this->process->getErrorOutput()),
-                ));
+                throw new SpellerProcessException(\sprintf('The "%s" process died (exit code %s). Stderr: %s', $this->getName(), var_export($this->process->getExitCode(), true), trim($this->process->getErrorOutput())));
             }
 
             if (microtime(true) > $deadline) {
-                throw new SpellerProcessException(sprintf(
-                    'Timed out after %.1fs waiting for a response from "%s". If the binary does not emit the '
-                    .'terminating blank line in terse mode, disable it (backend_options.terse_mode: false).',
-                    $this->readTimeout,
-                    $this->getName(),
-                ));
+                throw new SpellerProcessException(\sprintf('Timed out after %.1fs waiting for a response from "%s". If the binary does not emit the terminating blank line in terse mode, disable it (backend_options.terse_mode: false).', $this->readTimeout, $this->getName()));
             }
 
             usleep(self::READ_INTERVAL_US);

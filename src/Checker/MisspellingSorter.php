@@ -39,7 +39,7 @@ final class MisspellingSorter
     {
         usort($misspellings, self::compare());
 
-        return array_values($misspellings);
+        return $misspellings;
     }
 
     private static function nullLast(int|string|null $a, int|string|null $b): int

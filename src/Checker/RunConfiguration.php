@@ -49,7 +49,7 @@ final class RunConfiguration
         if (\in_array($base, $this->excludedLanguages, true)) {
             $this->diagnostics?->add(
                 DiagnosticCode::UNSUPPORTED_LANGUAGE,
-                sprintf('Language "%s" is excluded: word tokenization is not supported for it.', $language),
+                \sprintf('Language "%s" is excluded: word tokenization is not supported for it.', $language),
             );
 
             return $this->languageCache[$language] = null;
@@ -60,7 +60,7 @@ final class RunConfiguration
         if (null === $resolved) {
             $this->diagnostics?->add(
                 DiagnosticCode::MISSING_DICTIONARY,
-                sprintf('No dictionary available for locale "%s"; the corresponding messages were skipped.', $language),
+                \sprintf('No dictionary available for locale "%s"; the corresponding messages were skipped.', $language),
             );
         }
 

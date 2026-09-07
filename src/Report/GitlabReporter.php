@@ -23,10 +23,10 @@ final class GitlabReporter implements ReporterInterface
         $payload = [];
 
         foreach ($result->misspellings as $misspelling) {
-            $description = sprintf('Unknown word "%s"', $misspelling->word);
+            $description = \sprintf('Unknown word "%s"', $misspelling->word);
 
             if ([] !== $misspelling->suggestions) {
-                $description .= sprintf(' - did you mean %s?', implode(', ', $misspelling->suggestions));
+                $description .= \sprintf(' - did you mean %s?', implode(', ', $misspelling->suggestions));
             }
 
             $payload[] = [
@@ -35,8 +35,8 @@ final class GitlabReporter implements ReporterInterface
                 'fingerprint' => $misspelling->fingerprint(),
                 'severity' => 'minor',
                 'location' => [
-                    'path' => $misspelling->location?->path ?? $misspelling->location?->logical ?? 'unknown',
-                    'lines' => ['begin' => $misspelling->location?->line ?? 1],
+                    'path' => $misspelling->location->path ?? $misspelling->location->logical ?? 'unknown',
+                    'lines' => ['begin' => $misspelling->location->line ?? 1],
                 ],
             ];
         }

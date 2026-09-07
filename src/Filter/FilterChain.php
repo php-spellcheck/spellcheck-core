@@ -25,7 +25,7 @@ final class FilterChain
             static fn (MisspellingFilterInterface $a, MisspellingFilterInterface $b): int => $b::getDefaultPriority() <=> $a::getDefaultPriority(),
         );
 
-        $this->filters = array_values($filters);
+        $this->filters = $filters;
     }
 
     public function filter(Misspelling $misspelling): ?Misspelling

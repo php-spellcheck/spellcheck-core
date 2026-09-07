@@ -108,7 +108,7 @@ final class HunspellSpellerTest extends TestCase
     private function requireLanguage(string $language): void
     {
         if (!$this->speller->supportsLanguage($language)) {
-            self::markTestSkipped(sprintf('The %s hunspell dictionary is not installed.', $language));
+            self::markTestSkipped(\sprintf('The %s hunspell dictionary is not installed.', $language));
         }
     }
 

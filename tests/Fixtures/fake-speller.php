@@ -9,7 +9,6 @@ declare(strict_types=1);
  * Speaks exactly the subset of the protocol the production code relies on:
  * banner, control lines, "&" and "#" answers, terminating blank line.
  */
-
 $misspelled = [
     'mispell' => ['misspell', 'misspelt'],
     'messagi' => ['messaggi'],
@@ -29,7 +28,7 @@ while (false !== ($line = fgets(\STDIN))) {
     }
 
     // Control lines produce no answer at all.
-    if (\in_array($line[0], ['!', '%', '*', '@', '#', '+', '-', '~'], true)) {
+    if (in_array($line[0], ['!', '%', '*', '@', '#', '+', '-', '~'], true)) {
         continue;
     }
 
@@ -40,13 +39,13 @@ while (false !== ($line = fgets(\STDIN))) {
         exit(9);
     }
 
-    if (\array_key_exists($word, $misspelled)) {
+    if (array_key_exists($word, $misspelled)) {
         $suggestions = $misspelled[$word];
 
         if ([] === $suggestions) {
             fwrite(\STDOUT, sprintf("# %s 0\n", $word));
         } else {
-            fwrite(\STDOUT, sprintf("& %s %d 0: %s\n", $word, \count($suggestions), implode(', ', $suggestions)));
+            fwrite(\STDOUT, sprintf("& %s %d 0: %s\n", $word, count($suggestions), implode(', ', $suggestions)));
         }
     }
 

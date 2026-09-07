@@ -30,6 +30,9 @@ final class SpellerResult
         return new self($word, $this->suggestions, $this->type, $this->language);
     }
 
+    /**
+     * @param list<string> $suggestions
+     */
     public function withSuggestions(array $suggestions): self
     {
         return new self($this->word, array_values($suggestions), $this->type, $this->language);

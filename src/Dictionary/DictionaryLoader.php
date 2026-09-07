@@ -22,13 +22,13 @@ final class DictionaryLoader
     public function load(string $path): WordListDictionary
     {
         if (!is_file($path) || !is_readable($path)) {
-            throw new InvalidArgumentException(sprintf('The dictionary file "%s" does not exist or is not readable.', $path));
+            throw new InvalidArgumentException(\sprintf('The dictionary file "%s" does not exist or is not readable.', $path));
         }
 
         $contents = file_get_contents($path);
 
         if (false === $contents) {
-            throw new InvalidArgumentException(sprintf('Unable to read the dictionary file "%s".', $path));
+            throw new InvalidArgumentException(\sprintf('Unable to read the dictionary file "%s".', $path));
         }
 
         return new WordListDictionary(
@@ -108,7 +108,7 @@ final class DictionaryLoader
         $directory = \dirname($path);
 
         if (!is_dir($directory) && !mkdir($directory, 0o777, true) && !is_dir($directory)) {
-            throw new InvalidArgumentException(sprintf('Unable to create the directory "%s".', $directory));
+            throw new InvalidArgumentException(\sprintf('Unable to create the directory "%s".', $directory));
         }
 
         file_put_contents($path, $contents);

@@ -86,7 +86,7 @@ final class ChainSpeller implements SpellerInterface
         $parts = [];
 
         foreach ($this->spellers as $speller) {
-            $parts[] = sprintf('%s: %s', $speller->getName(), $speller->isAvailable() ? 'available' : 'unavailable');
+            $parts[] = \sprintf('%s: %s', $speller->getName(), $speller->isAvailable() ? 'available' : 'unavailable');
         }
 
         return implode(', ', $parts);
@@ -113,15 +113,12 @@ final class ChainSpeller implements SpellerInterface
         }
 
         if (null === $fallback) {
-            throw new SpellerNotAvailableException(
-                'No spell checking backend is available. Install hunspell or aspell, or configure '
-                .'"backend: wordlist" together with at least one dictionary file.',
-            );
+            throw new SpellerNotAvailableException('No spell checking backend is available. Install hunspell or aspell, or configure "backend: wordlist" together with at least one dictionary file.');
         }
 
         $this->diagnostics?->add(
             DiagnosticCode::BACKEND_FALLBACK,
-            sprintf('No backend declares a dictionary for "%s"; falling back to "%s".', $language, $fallback->getName()),
+            \sprintf('No backend declares a dictionary for "%s"; falling back to "%s".', $language, $fallback->getName()),
         );
 
         return $this->resolved[$language] = $fallback;

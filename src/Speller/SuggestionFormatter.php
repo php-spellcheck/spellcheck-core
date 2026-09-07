@@ -20,7 +20,7 @@ final class SuggestionFormatter
     public function format(string $word, array $suggestions, ?string $parent, int $limit = 3): array
     {
         if (null === $parent || $parent === $word || '' === $parent) {
-            return array_slice($suggestions, 0, $limit);
+            return \array_slice($suggestions, 0, $limit);
         }
 
         $formatted = [];
@@ -46,10 +46,10 @@ final class SuggestionFormatter
         }
 
         if ([] === $formatted) {
-            return array_slice($suggestions, 0, $limit);
+            return \array_slice($suggestions, 0, $limit);
         }
 
-        return array_slice(array_keys($formatted), 0, $limit);
+        return \array_slice(array_keys($formatted), 0, $limit);
     }
 
     private function applyCase(string $reference, string $suggestion): string

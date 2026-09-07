@@ -130,8 +130,8 @@ final class SpellcheckRunner
     }
 
     /**
-     * @param list<Word>                $batch
-     * @param array<int, TextFragment>  $fragmentsById
+     * @param list<Word>               $batch
+     * @param array<int, TextFragment> $fragmentsById
      *
      * @return iterable<Misspelling>
      */

@@ -70,7 +70,7 @@ final class WordListSpeller implements SpellerInterface
 
     public function describe(): string
     {
-        return sprintf('%d words (pure PHP, reduced coverage)', $this->dictionary->count());
+        return \sprintf('%d words (pure PHP, reduced coverage)', $this->dictionary->count());
     }
 
     private function isKnownCompound(string $word, string $language): bool
@@ -128,7 +128,7 @@ final class WordListSpeller implements SpellerInterface
 
         asort($candidates);
 
-        return array_slice(array_keys($candidates), 0, $this->maxSuggestions);
+        return \array_slice(array_keys($candidates), 0, $this->maxSuggestions);
     }
 
     /**

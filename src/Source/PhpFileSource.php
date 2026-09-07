@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace PHPSpellcheck\Core\Source;
 
+use PhpParser\Error as PhpParserError;
+use PhpParser\NodeTraverser;
+use PhpParser\Parser;
 use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
 use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
 use PHPSpellcheck\Core\Model\DiagnosticCode;
@@ -15,9 +18,6 @@ use PHPSpellcheck\Core\Php\IdentifierKind;
 use PHPSpellcheck\Core\Php\InlineSuppression;
 use PHPSpellcheck\Core\Php\ParserFactoryCompat;
 use PHPSpellcheck\Core\Support\Utf8;
-use PhpParser\Error as PhpParserError;
-use PhpParser\NodeTraverser;
-use PhpParser\Parser;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -88,7 +88,7 @@ final class PhpFileSource implements SourceInterface
             if (!is_dir($path) && !is_file($path)) {
                 $this->diagnostics?->add(
                     DiagnosticCode::SKIPPED_FILE,
-                    sprintf('The configured path "%s" does not exist.', $path),
+                    \sprintf('The configured path "%s" does not exist.', $path),
                 );
             }
         }
@@ -142,7 +142,7 @@ final class PhpFileSource implements SourceInterface
             if (!\is_string($converted) || !Utf8::isValidUtf8($converted)) {
                 $this->diagnostics?->add(
                     DiagnosticCode::ENCODING,
-                    sprintf('The file "%s" is not valid UTF-8 and could not be converted.', $relativePath),
+                    \sprintf('The file "%s" is not valid UTF-8 and could not be converted.', $relativePath),
                     Location::file($relativePath),
                 );
 
@@ -163,7 +163,7 @@ final class PhpFileSource implements SourceInterface
         } catch (PhpParserError $e) {
             $this->diagnostics?->add(
                 DiagnosticCode::PARSE_ERROR,
-                sprintf('%s: %s', $relativePath, $e->getMessage()),
+                \sprintf('%s: %s', $relativePath, $e->getMessage()),
                 Location::file($relativePath, $e->getStartLine() > 0 ? $e->getStartLine() : null),
             );
 

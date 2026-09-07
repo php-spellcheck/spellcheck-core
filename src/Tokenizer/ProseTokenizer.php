@@ -37,7 +37,7 @@ final class ProseTokenizer implements TokenizerInterface
 
         preg_match_all(self::WORD, $subject, $matches, \PREG_OFFSET_CAPTURE);
 
-        if ([] === ($matches[0] ?? [])) {
+        if ([] === $matches[0]) {
             return;
         }
 
@@ -45,7 +45,6 @@ final class ProseTokenizer implements TokenizerInterface
         $offsets = $fragment->getOffsets();
         $lines = new LineIndex($subject);
 
-        /** @var array{0: string, 1: int} $match */
         foreach ($matches[0] as $match) {
             [$token, $byteOffset] = $match;
 

@@ -23,7 +23,7 @@ final class GithubReporter implements ReporterInterface
     public function report(RunResult $result, WriterInterface $writer): void
     {
         foreach ($result->misspellings as $misspelling) {
-            $writer->writeln(sprintf(
+            $writer->writeln(\sprintf(
                 '::error %s::%s',
                 $this->parameters($misspelling),
                 self::escape($this->message($misspelling)),
@@ -31,7 +31,7 @@ final class GithubReporter implements ReporterInterface
         }
 
         foreach ($result->diagnostics as $diagnostic) {
-            $writer->writeln(sprintf('::warning title=Spellcheck::%s', self::escape($diagnostic->message)));
+            $writer->writeln(\sprintf('::warning title=Spellcheck::%s', self::escape($diagnostic->message)));
         }
     }
 
@@ -64,22 +64,22 @@ final class GithubReporter implements ReporterInterface
 
     private function message(Misspelling $misspelling): string
     {
-        $message = sprintf('Unknown word "%s"', $misspelling->word);
+        $message = \sprintf('Unknown word "%s"', $misspelling->word);
 
         if ([] !== $misspelling->suggestions) {
-            $message .= sprintf(' - did you mean %s?', implode(', ', $misspelling->suggestions));
+            $message .= \sprintf(' - did you mean %s?', implode(', ', $misspelling->suggestions));
         }
 
         $domain = $misspelling->context->get('domain');
 
         if (null !== $domain) {
-            $message .= sprintf(' [%s/%s]', $misspelling->context->get('locale') ?? '?', $domain);
+            $message .= \sprintf(' [%s/%s]', $misspelling->context->get('locale') ?? '?', $domain);
         }
 
         $identifier = $misspelling->context->get('identifier');
 
         if (null !== $identifier && $identifier !== $misspelling->word) {
-            $message .= sprintf(' [%s]', $identifier);
+            $message .= \sprintf(' [%s]', $identifier);
         }
 
         return $message;

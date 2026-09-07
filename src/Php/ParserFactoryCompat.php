@@ -21,6 +21,7 @@ final class ParserFactoryCompat
     {
         $factory = new ParserFactory();
 
+        /** @phpstan-ignore-next-line always true with php-parser 5, guards php-parser 4 */
         if (method_exists($factory, 'createForNewestSupportedVersion')) {
             /** @var Parser */
             return $factory->createForNewestSupportedVersion();

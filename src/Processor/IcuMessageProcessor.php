@@ -44,14 +44,17 @@ final class IcuMessageProcessor implements TextProcessorInterface
         };
     }
 
-    public function process(TextFragment $fragment): TextFragment|array
+    /**
+     * @return list<TextFragment>
+     */
+    public function process(TextFragment $fragment): array
     {
         try {
             $spans = $this->parser->parse($fragment->text);
         } catch (IcuSyntaxException $e) {
             $this->diagnostics?->add(
                 DiagnosticCode::ICU_SYNTAX,
-                sprintf('%s (%s)', $e->getMessage(), $fragment->context->fingerprintSeed()),
+                \sprintf('%s (%s)', $e->getMessage(), $fragment->context->fingerprintSeed()),
                 $fragment->location,
             );
 

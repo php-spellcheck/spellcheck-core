@@ -30,8 +30,8 @@ final class CsvReporter implements ReporterInterface
                 $misspelling->excerpt,
                 $misspelling->word,
                 implode(', ', $misspelling->suggestions),
-                $misspelling->location?->path ?? '',
-                (string) ($misspelling->location?->line ?? ''),
+                $misspelling->location->path ?? '',
+                (string) ($misspelling->location->line ?? ''),
             ]));
         }
     }

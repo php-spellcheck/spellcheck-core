@@ -59,7 +59,7 @@ final class TableReporter implements ReporterInterface
     private function line(WriterInterface $writer, Misspelling $misspelling): string
     {
         $position = null !== $misspelling->location?->line
-            ? sprintf('%d:%d', $misspelling->location->line, $misspelling->location->column ?? 0)
+            ? \sprintf('%d:%d', $misspelling->location->line, $misspelling->location->column ?? 0)
             : '(line unknown)';
 
         $word = $this->pad($misspelling->word, $this->maxWordWidth);
@@ -70,7 +70,7 @@ final class TableReporter implements ReporterInterface
 
         $context = $this->contextLabel($misspelling);
 
-        return sprintf(
+        return \sprintf(
             '    %s  %s  %s  %s',
             $this->style($writer, self::DIM, $this->pad($position, 14)),
             $this->style($writer, self::RED, $word),
@@ -107,15 +107,15 @@ final class TableReporter implements ReporterInterface
 
         $headline = 0 === $count
             ? $this->style($writer, self::GREEN, 'No new spelling issues.')
-            : $this->style($writer, self::RED, sprintf('%d new issue%s.', $count, 1 === $count ? '' : 's'));
+            : $this->style($writer, self::RED, \sprintf('%d new issue%s.', $count, 1 === $count ? '' : 's'));
 
-        $writer->writeln('  '.$headline.sprintf(
+        $writer->writeln('  '.$headline.\sprintf(
             ' %d suppressed by baseline, %d suppressed inline.',
             $stats->suppressedByBaseline,
             $stats->suppressedInline,
         ));
 
-        $writer->writeln(sprintf(
+        $writer->writeln(\sprintf(
             '  %d files, %d fragments, %d words checked (%d unique), cache %d%% hit.',
             $stats->filesScanned,
             $stats->fragments,
@@ -129,14 +129,14 @@ final class TableReporter implements ReporterInterface
         }
 
         if ([] !== $result->outdatedBaselineEntries) {
-            $writer->writeln(sprintf(
+            $writer->writeln(\sprintf(
                 '  %s%d baseline entries were not reproduced; run "spellcheck:baseline --prune".',
                 $this->style($writer, self::YELLOW, '! '),
                 \count($result->outdatedBaselineEntries),
             ));
         }
 
-        $writer->writeln(sprintf('  %.2fs', $stats->durationSeconds));
+        $writer->writeln(\sprintf('  %.2fs', $stats->durationSeconds));
         $writer->writeln('');
     }
 
@@ -154,8 +154,8 @@ final class TableReporter implements ReporterInterface
                 ? 'Translations'
                 : 'Code';
 
-            $file = $misspelling->location?->path
-                ?? $misspelling->location?->logical
+            $file = $misspelling->location->path
+                ?? $misspelling->location->logical
                 ?? '(unknown location)';
 
             $groups[$source][$file][] = $misspelling;

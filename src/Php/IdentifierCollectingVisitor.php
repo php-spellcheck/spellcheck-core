@@ -122,7 +122,7 @@ final class IdentifierCollectingVisitor extends NodeVisitorAbstract
         }
 
         if ($node instanceof $this->propertyItemClass) {
-            /** @var object{name: mixed} $node */
+            /** @phpstan-ignore-next-line property name differs between php-parser 4 and 5 node classes */
             $this->add(IdentifierKind::PROPERTY, (string) $node->name, $node->getStartLine());
         }
 

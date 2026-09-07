@@ -76,7 +76,7 @@ final class OffsetMapTest extends TestCase
             self::assertSame(
                 $left->translate($offset),
                 $right->translate($offset),
-                sprintf('composition differs at offset %d', $offset),
+                \sprintf('composition differs at offset %d', $offset),
             );
         }
     }

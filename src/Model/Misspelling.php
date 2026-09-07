@@ -31,6 +31,9 @@ final class Misspelling
         return Fingerprint::of($this);
     }
 
+    /**
+     * @param list<string> $suggestions
+     */
     public function withSuggestions(array $suggestions): self
     {
         return new self(

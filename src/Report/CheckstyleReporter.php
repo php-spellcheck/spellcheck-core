@@ -20,20 +20,20 @@ final class CheckstyleReporter implements ReporterInterface
         $byFile = [];
 
         foreach ($result->misspellings as $misspelling) {
-            $byFile[$misspelling->location?->path ?? $misspelling->location?->logical ?? 'unknown'][] = $misspelling;
+            $byFile[$misspelling->location->path ?? $misspelling->location->logical ?? 'unknown'][] = $misspelling;
         }
 
         $writer->writeln('<?xml version="1.0" encoding="UTF-8"?>');
         $writer->writeln('<checkstyle version="1.0">');
 
         foreach ($byFile as $file => $misspellings) {
-            $writer->writeln(sprintf('  <file name="%s">', self::attr($file)));
+            $writer->writeln(\sprintf('  <file name="%s">', self::attr($file)));
 
             foreach ($misspellings as $misspelling) {
-                $writer->writeln(sprintf(
+                $writer->writeln(\sprintf(
                     '    <error line="%d" column="%d" severity="%s" message="%s" source="AcmeSpellcheck.Spelling"/>',
-                    $misspelling->location?->line ?? 0,
-                    $misspelling->location?->column ?? 0,
+                    $misspelling->location->line ?? 0,
+                    $misspelling->location->column ?? 0,
                     $misspelling->severity->value,
                     self::attr($this->message($misspelling)),
                 ));
@@ -47,10 +47,10 @@ final class CheckstyleReporter implements ReporterInterface
 
     private function message(Misspelling $misspelling): string
     {
-        $message = sprintf('Unknown word "%s"', $misspelling->word);
+        $message = \sprintf('Unknown word "%s"', $misspelling->word);
 
         if ([] !== $misspelling->suggestions) {
-            $message .= sprintf(' (%s)', implode(', ', $misspelling->suggestions));
+            $message .= \sprintf(' (%s)', implode(', ', $misspelling->suggestions));
         }
 
         return $message;

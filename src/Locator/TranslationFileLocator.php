@@ -23,7 +23,7 @@ final class TranslationFileLocator
     private ?array $candidates = null;
 
     /**
-     * @param list<string>                 $paths
+     * @param list<string>                  $paths
      * @param iterable<KeyLocatorInterface> $locators
      */
     public function __construct(
@@ -76,7 +76,7 @@ final class TranslationFileLocator
 
     public function descriptor(string $locale, string $domain, string $key): string
     {
-        return sprintf('%s/%s/%s', $locale, $domain, $key);
+        return \sprintf('%s/%s/%s', $locale, $domain, $key);
     }
 
     private function lineIn(string $path, string $key, string $value): ?int

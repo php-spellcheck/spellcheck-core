@@ -25,41 +25,29 @@ final class BaselineStorage
         $raw = file_get_contents($path);
 
         if (false === $raw) {
-            throw new BaselineSchemaException(sprintf('Unable to read the baseline file "%s".', $path));
+            throw new BaselineSchemaException(\sprintf('Unable to read the baseline file "%s".', $path));
         }
 
-        /** @var mixed $data */
         $data = json_decode($raw, true);
 
         if (\JSON_ERROR_NONE !== json_last_error() || !\is_array($data)) {
-            throw new BaselineSchemaException(sprintf('The baseline file "%s" is not valid JSON.', $path));
+            throw new BaselineSchemaException(\sprintf('The baseline file "%s" is not valid JSON.', $path));
         }
 
         $schema = $data['schema'] ?? null;
 
         if (self::SCHEMA !== $schema) {
-            throw new BaselineSchemaException(sprintf(
-                'The baseline file "%s" uses schema %s but %d is expected. Regenerate it with "spellcheck:baseline".',
-                $path,
-                var_export($schema, true),
-                self::SCHEMA,
-            ));
+            throw new BaselineSchemaException(\sprintf('The baseline file "%s" uses schema %s but %d is expected. Regenerate it with "spellcheck:baseline".', $path, var_export($schema, true), self::SCHEMA));
         }
 
         if (($data['fingerprint_schema'] ?? null) !== Fingerprint::SCHEMA_VERSION) {
-            throw new BaselineSchemaException(sprintf(
-                'The baseline file "%s" was generated with fingerprint schema %s but %s is in use. '
-                .'Regenerate it with "spellcheck:baseline".',
-                $path,
-                var_export($data['fingerprint_schema'] ?? null, true),
-                Fingerprint::SCHEMA_VERSION,
-            ));
+            throw new BaselineSchemaException(\sprintf('The baseline file "%s" was generated with fingerprint schema %s but %s is in use. Regenerate it with "spellcheck:baseline".', $path, var_export($data['fingerprint_schema'] ?? null, true), Fingerprint::SCHEMA_VERSION));
         }
 
         $entries = $data['entries'] ?? [];
 
         if (!\is_array($entries)) {
-            throw new BaselineSchemaException(sprintf('The "entries" key of "%s" must be an object.', $path));
+            throw new BaselineSchemaException(\sprintf('The "entries" key of "%s" must be an object.', $path));
         }
 
         $validated = [];
@@ -67,7 +55,7 @@ final class BaselineStorage
         /** @var mixed $entry */
         foreach ($entries as $fingerprint => $entry) {
             if (!\is_string($fingerprint) || !\is_array($entry)) {
-                throw new BaselineSchemaException(sprintf('Malformed baseline entry in "%s".', $path));
+                throw new BaselineSchemaException(\sprintf('Malformed baseline entry in "%s".', $path));
             }
 
             $validated[$fingerprint] = [
@@ -132,7 +120,7 @@ final class BaselineStorage
         $directory = \dirname($path);
 
         if (!is_dir($directory) && !mkdir($directory, 0o777, true) && !is_dir($directory)) {
-            throw new BaselineSchemaException(sprintf('Unable to create the directory "%s".', $directory));
+            throw new BaselineSchemaException(\sprintf('Unable to create the directory "%s".', $directory));
         }
 
         file_put_contents($path, $json."\n");

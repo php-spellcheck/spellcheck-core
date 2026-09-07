@@ -31,7 +31,7 @@ final class NormalizeApostropheProcessor implements TextProcessorInterface
         return !$fragment->isBlank();
     }
 
-    public function process(TextFragment $fragment): TextFragment|array
+    public function process(TextFragment $fragment): TextFragment
     {
         $text = strtr($fragment->text, self::REPLACEMENTS);
 

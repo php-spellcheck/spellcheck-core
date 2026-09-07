@@ -17,8 +17,9 @@ final class Version
 
     public static function string(): string
     {
-        $version = sprintf('%d.%d.%d', self::MAJOR, self::MINOR, self::PATCH);
+        $version = \sprintf('%d.%d.%d', self::MAJOR, self::MINOR, self::PATCH);
 
+        /** @phpstan-ignore-next-line notIdentical.alwaysTrue current EXTRA value is non-empty, but the check supports a future empty value */
         return '' !== self::EXTRA ? $version.'-'.self::EXTRA : $version;
     }
 }

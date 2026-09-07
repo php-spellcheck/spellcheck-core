@@ -17,11 +17,7 @@ final class BuiltinDictionaries
     public static function path(string $name): string
     {
         if (!\in_array($name, self::NAMES, true)) {
-            throw new InvalidArgumentException(sprintf(
-                'Unknown builtin dictionary "%s". Available: %s.',
-                $name,
-                implode(', ', self::NAMES),
-            ));
+            throw new InvalidArgumentException(\sprintf('Unknown builtin dictionary "%s". Available: %s.', $name, implode(', ', self::NAMES)));
         }
 
         return \dirname(__DIR__, 2).'/resources/dictionaries/'.$name.'.txt';

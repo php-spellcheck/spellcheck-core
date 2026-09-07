@@ -116,8 +116,6 @@ final class IcuMessageParserTest extends TestCase
     }
 
     /**
-     * @param list<IcuTextSpan> $spans
-     *
      * @return list<string>
      */
     private function texts(string $message): array

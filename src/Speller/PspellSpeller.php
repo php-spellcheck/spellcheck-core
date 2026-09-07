@@ -13,7 +13,7 @@ use PHPSpellcheck\Core\Model\MisspellingType;
  */
 final class PspellSpeller implements SpellerInterface
 {
-    /** @var array<string, int> */
+    /** @var array<string, \PSpell\Dictionary> */
     private array $handles = [];
 
     public function __construct(
@@ -79,7 +79,7 @@ final class PspellSpeller implements SpellerInterface
             : 'ext-pspell is not loaded';
     }
 
-    private function handle(string $language): int
+    private function handle(string $language): \PSpell\Dictionary
     {
         $language = str_replace('-', '_', $language);
 

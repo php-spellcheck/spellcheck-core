@@ -8,9 +8,13 @@ namespace PHPSpellcheck\Core\Php;
  * Scans a PHP file for suppression markers:
  *
  *   @spellcheck-ignore-file
+ *
  *   @spellcheck-ignore-line
+ *
  *   @spellcheck-ignore-next-line
+ *
  *   @spellcheck-disable ... @spellcheck-enable
+ *
  *   @spellcheck-words foo bar
  */
 final class InlineSuppression

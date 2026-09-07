@@ -10,6 +10,7 @@ final class Baseline
 {
     /**
      * @param array<string, array<string, mixed>> $entries fingerprint => payload
+     * @param array<string, true>                 $used
      */
     private function __construct(
         private array $entries = [],
@@ -52,7 +53,7 @@ final class Baseline
             'type' => $misspelling->type->value,
             'language' => $misspelling->language,
             'context' => $misspelling->context->toArray(),
-            'seen_at' => $misspelling->location?->path ?? $misspelling->location?->logical ?? '',
+            'seen_at' => $misspelling->location->path ?? $misspelling->location->logical ?? '',
         ];
     }
 

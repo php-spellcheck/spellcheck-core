@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 /**
  * Standalone smoke test: runs the parts of the engine that have no external
- * dependency, without composer. `php tests/smoke.php`
+ * dependency, without composer. `php tests/smoke.php`.
  *
  * The real test suite lives in tests/Unit and needs PHPUnit.
  */
-
 spl_autoload_register(static function (string $class): void {
     if (!str_starts_with($class, 'PHPSpellcheck\\Core\\')) {
         return;
     }
 
-    $relative = substr($class, \strlen('PHPSpellcheck\\Core\\'));
+    $relative = substr($class, strlen('PHPSpellcheck\\Core\\'));
     $path = __DIR__.'/../src/'.str_replace('\\', '/', $relative).'.php';
 
     if (is_file($path)) {
@@ -162,7 +161,7 @@ assertSame(
 $thrown = false;
 try {
     $icu->parse('{n, plural, one {x');
-} catch (\PHPSpellcheck\Core\Exception\IcuSyntaxException) {
+} catch (PHPSpellcheck\Core\Exception\IcuSyntaxException) {
     $thrown = true;
 }
 assertTrue($thrown, 'malformed ICU throws IcuSyntaxException');
@@ -275,7 +274,7 @@ assertSame(['indirizzo'], $byWord['indirizio']->suggestions, 'suggestion for ind
 // FR-304.2: the suggestion is reshaped in the identifier convention.
 assertSame(['OrderSubscriber'], $byWord['Suscriber']->suggestions, 'identifier suggestions keep the parent shape');
 
-assertSame(0, \count($result->diagnostics), 'no diagnostics on a clean run');
+assertSame(0, count($result->diagnostics), 'no diagnostics on a clean run');
 assertTrue($result->stats->wordsChecked > 10, 'words were actually checked');
 
 // --------------------------------------------------------------- baseline
@@ -284,7 +283,7 @@ $baseline = Baseline::fromMisspellings($result->misspellings, 'testhash');
 assertSame(3, $baseline->count(), 'baseline records every issue');
 
 $second = $runner->run([new ArrayFragmentSource($fragments)], $config, $baseline);
-assertSame(0, \count($second->misspellings), 'baseline suppresses known issues');
+assertSame(0, count($second->misspellings), 'baseline suppresses known issues');
 assertSame(3, $second->stats->suppressedByBaseline, 'suppressed issues are counted');
 assertSame([], $second->outdatedBaselineEntries, 'nothing is outdated on an identical run');
 

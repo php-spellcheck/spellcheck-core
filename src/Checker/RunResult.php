@@ -41,6 +41,9 @@ final class RunResult
         return false;
     }
 
+    /**
+     * @param list<string> $fingerprints
+     */
     public function withOutdated(array $fingerprints): self
     {
         return new self($this->misspellings, $this->diagnostics, $this->stats, array_values($fingerprints));

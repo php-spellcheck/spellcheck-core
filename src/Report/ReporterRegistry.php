@@ -29,11 +29,7 @@ final class ReporterRegistry
     public function get(string $name): ReporterInterface
     {
         if (!isset($this->reporters[$name])) {
-            throw new InvalidArgumentException(sprintf(
-                'Unknown report format "%s". Available formats: %s.',
-                $name,
-                implode(', ', $this->getNames()),
-            ));
+            throw new InvalidArgumentException(\sprintf('Unknown report format "%s". Available formats: %s.', $name, implode(', ', $this->getNames())));
         }
 
         return $this->reporters[$name];

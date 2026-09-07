@@ -29,7 +29,7 @@ final class ProcessorChain
             static fn (TextProcessorInterface $a, TextProcessorInterface $b): int => $b::getDefaultPriority() <=> $a::getDefaultPriority(),
         );
 
-        $this->processors = array_values($processors);
+        $this->processors = $processors;
     }
 
     /**

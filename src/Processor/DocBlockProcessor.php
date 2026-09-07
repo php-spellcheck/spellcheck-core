@@ -32,7 +32,7 @@ final class DocBlockProcessor implements TextProcessorInterface
         return TokenizerMode::DOCBLOCK === $fragment->tokenizer && !$fragment->isBlank();
     }
 
-    public function process(TextFragment $fragment): TextFragment|array
+    public function process(TextFragment $fragment): TextFragment
     {
         $builder = new OffsetMapBuilder();
         $offset = 0;

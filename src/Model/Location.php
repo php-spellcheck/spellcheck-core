@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
 /**
  * A physical location (file, line, column), a logical one

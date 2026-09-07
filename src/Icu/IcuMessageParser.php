@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Icu;
+namespace PHPSpellcheck\Core\Icu;
 
-use Acme\Spellcheck\Exception\IcuSyntaxException;
+use PHPSpellcheck\Core\Exception\IcuSyntaxException;
 
 /**
  * Recursive descent parser for ICU MessageFormat.

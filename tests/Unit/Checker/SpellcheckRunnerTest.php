@@ -2,41 +2,41 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Checker;
+namespace PHPSpellcheck\Core\Tests\Unit\Checker;
 
-use Acme\Spellcheck\Baseline\Baseline;
-use Acme\Spellcheck\Checker\ExitCodeCalculator;
-use Acme\Spellcheck\Checker\MisspellingFactory;
-use Acme\Spellcheck\Checker\RunConfiguration;
-use Acme\Spellcheck\Checker\RunStatisticsCollector;
-use Acme\Spellcheck\Checker\SpellcheckRunner;
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Dictionary\AggregateDictionary;
-use Acme\Spellcheck\Dictionary\LocaleDictionaryMap;
-use Acme\Spellcheck\Dictionary\WordListDictionary;
-use Acme\Spellcheck\Filter\BaselineFilter;
-use Acme\Spellcheck\Filter\DeduplicationFilter;
-use Acme\Spellcheck\Filter\DictionaryFilter;
-use Acme\Spellcheck\Filter\FilterChain;
-use Acme\Spellcheck\Icu\IcuMessageParser;
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\Location;
-use Acme\Spellcheck\Model\Misspelling;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\TokenizerMode;
-use Acme\Spellcheck\Processor\HtmlProcessor;
-use Acme\Spellcheck\Processor\IcuMessageProcessor;
-use Acme\Spellcheck\Processor\LegacyPluralProcessor;
-use Acme\Spellcheck\Processor\NormalizeApostropheProcessor;
-use Acme\Spellcheck\Processor\PlaceholderProcessor;
-use Acme\Spellcheck\Processor\ProcessorChain;
-use Acme\Spellcheck\Processor\SprintfProcessor;
-use Acme\Spellcheck\Processor\UrlProcessor;
-use Acme\Spellcheck\Source\ArrayFragmentSource;
-use Acme\Spellcheck\Speller\WordListSpeller;
-use Acme\Spellcheck\Tokenizer\IdentifierSplitter;
-use Acme\Spellcheck\Tokenizer\ProseTokenizer;
-use Acme\Spellcheck\Tokenizer\TokenizerRegistry;
+use PHPSpellcheck\Core\Baseline\Baseline;
+use PHPSpellcheck\Core\Checker\ExitCodeCalculator;
+use PHPSpellcheck\Core\Checker\MisspellingFactory;
+use PHPSpellcheck\Core\Checker\RunConfiguration;
+use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
+use PHPSpellcheck\Core\Checker\SpellcheckRunner;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Dictionary\AggregateDictionary;
+use PHPSpellcheck\Core\Dictionary\LocaleDictionaryMap;
+use PHPSpellcheck\Core\Dictionary\WordListDictionary;
+use PHPSpellcheck\Core\Filter\BaselineFilter;
+use PHPSpellcheck\Core\Filter\DeduplicationFilter;
+use PHPSpellcheck\Core\Filter\DictionaryFilter;
+use PHPSpellcheck\Core\Filter\FilterChain;
+use PHPSpellcheck\Core\Icu\IcuMessageParser;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\Location;
+use PHPSpellcheck\Core\Model\Misspelling;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TokenizerMode;
+use PHPSpellcheck\Core\Processor\HtmlProcessor;
+use PHPSpellcheck\Core\Processor\IcuMessageProcessor;
+use PHPSpellcheck\Core\Processor\LegacyPluralProcessor;
+use PHPSpellcheck\Core\Processor\NormalizeApostropheProcessor;
+use PHPSpellcheck\Core\Processor\PlaceholderProcessor;
+use PHPSpellcheck\Core\Processor\ProcessorChain;
+use PHPSpellcheck\Core\Processor\SprintfProcessor;
+use PHPSpellcheck\Core\Processor\UrlProcessor;
+use PHPSpellcheck\Core\Source\ArrayFragmentSource;
+use PHPSpellcheck\Core\Speller\WordListSpeller;
+use PHPSpellcheck\Core\Tokenizer\IdentifierSplitter;
+use PHPSpellcheck\Core\Tokenizer\ProseTokenizer;
+use PHPSpellcheck\Core\Tokenizer\TokenizerRegistry;
 use PHPUnit\Framework\TestCase;
 
 final class SpellcheckRunnerTest extends TestCase
@@ -259,7 +259,7 @@ final class SpellcheckRunnerTest extends TestCase
     /**
      * @param list<TextFragment> $fragments
      */
-    private function run(array $fragments): \Acme\Spellcheck\Checker\RunResult
+    private function run(array $fragments): \PHPSpellcheck\Core\Checker\RunResult
     {
         return $this->runner->run([new ArrayFragmentSource($fragments)], $this->config);
     }

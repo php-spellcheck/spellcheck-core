@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Report;
+namespace PHPSpellcheck\Core\Report;
 
 final class BufferedWriter implements WriterInterface
 {

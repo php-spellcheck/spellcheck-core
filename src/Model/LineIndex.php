@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
 /**
  * Resolves a character offset to a 1-based line number in O(log n).

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Php;
+namespace PHPSpellcheck\Core\Tests\Unit\Php;
 
-use Acme\Spellcheck\Php\InlineSuppression;
+use PHPSpellcheck\Core\Php\InlineSuppression;
 use PHPUnit\Framework\TestCase;
 
 final class InlineSuppressionTest extends TestCase

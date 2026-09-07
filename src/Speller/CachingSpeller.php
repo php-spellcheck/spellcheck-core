@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Checker\RunStatisticsCollector;
-use Acme\Spellcheck\Model\MisspellingType;
-use Acme\Spellcheck\Model\Word;
+use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
+use PHPSpellcheck\Core\Model\MisspellingType;
+use PHPSpellcheck\Core\Model\Word;
 use Psr\Cache\CacheItemPoolInterface;
 
 /**

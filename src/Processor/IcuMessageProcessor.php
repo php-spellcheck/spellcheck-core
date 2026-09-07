@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Exception\IcuSyntaxException;
-use Acme\Spellcheck\Icu\IcuMessageParser;
-use Acme\Spellcheck\Model\DiagnosticCode;
-use Acme\Spellcheck\Model\TextFragment;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Exception\IcuSyntaxException;
+use PHPSpellcheck\Core\Icu\IcuMessageParser;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Model\TextFragment;
 
 /**
  * Expands an ICU message into one fragment per textual branch.

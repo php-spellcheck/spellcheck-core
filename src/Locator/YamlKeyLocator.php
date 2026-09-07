@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Locator;
+namespace PHPSpellcheck\Core\Locator;
 
 /**
  * Best effort line lookup in a YAML translation file.

@@ -1,11 +1,11 @@
 {
-    "name": "acme/spellcheck",
-    "description": "Spell checking engine for PHP code and translation catalogues",
+    "name": "php-spellcheck/spellcheck",
+    "description": "Framework-agnostic PHP spell checking engine for source code and translation files. Hunspell, Aspell, pspell or pure PHP backends, character-accurate positions, PSR-6 caching.",
     "type": "library",
-    "keywords": ["spellcheck", "spelling", "hunspell", "aspell", "translations", "static-analysis"],
+    "keywords": ["psr-6", "php-parser", "spell-checker", "spellcheck", "spelling", "php", "hunspell", "aspell", "translations", "i18n", "l10n", "code-quality", "static-analysis", "linter", "typo", "icu", "continuous-integration", "developer-tools"],
     "license": "MIT",
     "authors": [
-        { "name": "Acme", "homepage": "https://example.com" }
+        { "name": "Raffaele Carelle", "email": "raffaele.carelle@gmail.com" }
     ],
     "require": {
         "php": ">=8.1",
@@ -27,10 +27,10 @@
         "symfony/translation": "To check Symfony translation catalogues (see acme/spellcheck-bundle)"
     },
     "autoload": {
-        "psr-4": { "Acme\\Spellcheck\\": "src/" }
+        "psr-4": { "PHPSpellcheck\\Core\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Acme\\Spellcheck\\Tests\\": "tests/" }
+        "psr-4": { "PHPSpellcheck\\Core\\Tests\\": "tests/" }
     },
     "config": {
         "sort-packages": true

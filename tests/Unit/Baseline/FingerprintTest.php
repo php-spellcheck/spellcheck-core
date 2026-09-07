@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Baseline;
+namespace PHPSpellcheck\Core\Tests\Unit\Baseline;
 
-use Acme\Spellcheck\Baseline\Fingerprint;
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\Location;
-use Acme\Spellcheck\Model\Misspelling;
-use Acme\Spellcheck\Model\MisspellingType;
+use PHPSpellcheck\Core\Baseline\Fingerprint;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\Location;
+use PHPSpellcheck\Core\Model\Misspelling;
+use PHPSpellcheck\Core\Model\MisspellingType;
 use PHPUnit\Framework\TestCase;
 
 final class FingerprintTest extends TestCase

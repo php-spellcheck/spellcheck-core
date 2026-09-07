@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
 /**
  * Accepts everything. Useful to measure the cost of the pipeline alone and as

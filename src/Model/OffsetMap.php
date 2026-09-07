@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
 /**
  * Maps offsets of a transformed text back to offsets of the original text.

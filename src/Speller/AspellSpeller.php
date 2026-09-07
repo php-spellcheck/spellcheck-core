@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
 use Symfony\Component\Process\Process;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
 /**
  * Rewrites a raw suggestion in the shape of the identifier it came from:

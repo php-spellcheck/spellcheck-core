@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
 /**
  * A non-spelling problem: skipped file, missing dictionary, malformed ICU.

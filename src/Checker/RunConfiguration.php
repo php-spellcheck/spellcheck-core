@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Dictionary\LocaleDictionaryMap;
-use Acme\Spellcheck\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Dictionary\LocaleDictionaryMap;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
 
 /**
  * Effective configuration of a single run: the merge of the static

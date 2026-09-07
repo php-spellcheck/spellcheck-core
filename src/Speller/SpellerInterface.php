@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Model\Word;
+use PHPSpellcheck\Core\Model\Word;
 
 interface SpellerInterface
 {

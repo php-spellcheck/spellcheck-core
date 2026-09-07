@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Exception\SpellerNotAvailableException;
-use Acme\Spellcheck\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Exception\SpellerNotAvailableException;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
 
 /**
  * Implements "backend: auto": picks, at runtime, the first backend that is

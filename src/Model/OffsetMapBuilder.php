@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
 /**
  * Incrementally builds a transformed text together with its OffsetMap.

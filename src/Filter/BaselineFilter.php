@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Filter;
+namespace PHPSpellcheck\Core\Filter;
 
-use Acme\Spellcheck\Baseline\Baseline;
-use Acme\Spellcheck\Checker\RunStatisticsCollector;
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Baseline\Baseline;
+use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 /**
  * Runs last, so that it only accounts for what would actually have been

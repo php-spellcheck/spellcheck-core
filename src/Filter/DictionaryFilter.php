@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Filter;
+namespace PHPSpellcheck\Core\Filter;
 
-use Acme\Spellcheck\Dictionary\DictionaryInterface;
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Dictionary\DictionaryInterface;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 /**
  * Applies the project dictionaries downstream of the backend, so that the

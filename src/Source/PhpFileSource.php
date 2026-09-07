@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Source;
+namespace PHPSpellcheck\Core\Source;
 
-use Acme\Spellcheck\Checker\RunStatisticsCollector;
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Model\DiagnosticCode;
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\Location;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Php\IdentifierCollectingVisitor;
-use Acme\Spellcheck\Php\IdentifierKind;
-use Acme\Spellcheck\Php\InlineSuppression;
-use Acme\Spellcheck\Php\ParserFactoryCompat;
-use Acme\Spellcheck\Support\Utf8;
+use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\Location;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Php\IdentifierCollectingVisitor;
+use PHPSpellcheck\Core\Php\IdentifierKind;
+use PHPSpellcheck\Core\Php\InlineSuppression;
+use PHPSpellcheck\Core\Php\ParserFactoryCompat;
+use PHPSpellcheck\Core\Support\Utf8;
 use PhpParser\Error as PhpParserError;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser;

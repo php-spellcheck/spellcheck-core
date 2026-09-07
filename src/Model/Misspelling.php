@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Model;
+namespace PHPSpellcheck\Core\Model;
 
-use Acme\Spellcheck\Baseline\Fingerprint;
+use PHPSpellcheck\Core\Baseline\Fingerprint;
 
 /**
  * @psalm-immutable

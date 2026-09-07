@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Speller;
+namespace PHPSpellcheck\Core\Tests\Unit\Speller;
 
-use Acme\Spellcheck\Exception\SpellerProcessException;
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Speller\SpellerResult;
+use PHPSpellcheck\Core\Exception\SpellerProcessException;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Speller\SpellerResult;
 use PHPUnit\Framework\TestCase;
 
 final class PipeSpellerTest extends TestCase
@@ -96,7 +96,7 @@ final class PipeSpellerTest extends TestCase
 
     public function testAMissingBinaryIsReportedClearly(): void
     {
-        $speller = new class('does-not-exist-anywhere') extends \Acme\Spellcheck\Speller\PipeSpeller {
+        $speller = new class('does-not-exist-anywhere') extends \PHPSpellcheck\Core\Speller\PipeSpeller {
             public function getName(): string
             {
                 return 'broken';

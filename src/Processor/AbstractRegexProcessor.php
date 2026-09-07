@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Model\OffsetMapBuilder;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Support\Utf8;
+use PHPSpellcheck\Core\Model\OffsetMapBuilder;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Support\Utf8;
 
 /**
  * Base class for processors that simply blank out everything matching a

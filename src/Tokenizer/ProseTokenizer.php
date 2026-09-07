@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tokenizer;
+namespace PHPSpellcheck\Core\Tokenizer;
 
-use Acme\Spellcheck\Model\LineIndex;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\TokenizerMode;
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Support\Utf8;
+use PHPSpellcheck\Core\Model\LineIndex;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TokenizerMode;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Support\Utf8;
 
 /**
  * Tokenizer for natural language.

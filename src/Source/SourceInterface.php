@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Source;
+namespace PHPSpellcheck\Core\Source;
 
-use Acme\Spellcheck\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TextFragment;
 
 interface SourceInterface
 {

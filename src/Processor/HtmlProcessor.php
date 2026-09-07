@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
 /**
  * Removes HTML tags, comments and entities. strip_tags() is deliberately not

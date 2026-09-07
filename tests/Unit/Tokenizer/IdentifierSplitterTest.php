@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Tokenizer;
+namespace PHPSpellcheck\Core\Tests\Unit\Tokenizer;
 
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\TokenizerMode;
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Tokenizer\IdentifierSplitter;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TokenizerMode;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Tokenizer\IdentifierSplitter;
 use PHPUnit\Framework\TestCase;
 
 final class IdentifierSplitterTest extends TestCase

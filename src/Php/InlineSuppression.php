@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Php;
+namespace PHPSpellcheck\Core\Php;
 
 /**
  * Scans a PHP file for suppression markers:

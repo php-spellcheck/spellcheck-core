@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Model\MisspellingType;
-use Acme\Spellcheck\Model\Word;
+use PHPSpellcheck\Core\Model\MisspellingType;
+use PHPSpellcheck\Core\Model\Word;
 
 /**
  * Returned only for words the backend does not recognise.

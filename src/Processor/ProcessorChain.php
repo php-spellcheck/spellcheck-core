@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TextFragment;
 
 /**
  * Runs the processors in decreasing priority order, propagating the fragment

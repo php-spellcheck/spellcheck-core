@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
 /**
  * @psalm-immutable

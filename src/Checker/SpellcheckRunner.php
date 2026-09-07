@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
-use Acme\Spellcheck\Baseline\Baseline;
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Filter\BaselineFilter;
-use Acme\Spellcheck\Filter\FilterChain;
-use Acme\Spellcheck\Model\Misspelling;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Processor\ProcessorChain;
-use Acme\Spellcheck\Source\SourceInterface;
-use Acme\Spellcheck\Speller\SpellerInterface;
-use Acme\Spellcheck\Tokenizer\TokenizerRegistry;
+use PHPSpellcheck\Core\Baseline\Baseline;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Filter\BaselineFilter;
+use PHPSpellcheck\Core\Filter\FilterChain;
+use PHPSpellcheck\Core\Model\Misspelling;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Processor\ProcessorChain;
+use PHPSpellcheck\Core\Source\SourceInterface;
+use PHPSpellcheck\Core\Speller\SpellerInterface;
+use PHPSpellcheck\Core\Tokenizer\TokenizerRegistry;
 use Psr\Log\LoggerInterface;
 
 /**

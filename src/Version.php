@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck;
+namespace Spellcheck;
 
 final class Version
 {

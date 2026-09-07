@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Php;
+namespace PHPSpellcheck\Core\Php;
 
 /**
  * Node classes renamed between php-parser 4 and 5.

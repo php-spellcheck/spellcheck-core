@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
 /**
  * Removes Symfony, Twig, ICU-simple and named-parameter placeholders.

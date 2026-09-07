@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Fixtures\Php;
+namespace PHPSpellcheck\Core\Tests\Fixtures\Php;
 
 /**
  * A sample class with a deliberate typo in the docblock: an erorr.

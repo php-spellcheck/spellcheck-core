@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Locator;
+namespace PHPSpellcheck\Core\Locator;
 
 /**
  * Line lookup in a PHP file returning an array of messages.

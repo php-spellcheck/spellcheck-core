@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Model;
+namespace PHPSpellcheck\Core\Tests\Unit\Model;
 
-use Acme\Spellcheck\Model\OffsetMap;
-use Acme\Spellcheck\Model\OffsetMapBuilder;
+use PHPSpellcheck\Core\Model\OffsetMap;
+use PHPSpellcheck\Core\Model\OffsetMapBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class OffsetMapTest extends TestCase

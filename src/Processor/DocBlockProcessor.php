@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Model\OffsetMapBuilder;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\TokenizerMode;
+use PHPSpellcheck\Core\Model\OffsetMapBuilder;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TokenizerMode;
 
 /**
  * Turns a docblock or comment into plain prose: strips comment markers, inline

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Locator;
+namespace PHPSpellcheck\Core\Locator;
 
-use Acme\Spellcheck\Model\Location;
+use PHPSpellcheck\Core\Model\Location;
 use Symfony\Component\Finder\Finder;
 
 /**

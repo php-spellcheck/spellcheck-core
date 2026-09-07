@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
 /**
  * Mutable counter shared by the runner, the sources and the caching speller.

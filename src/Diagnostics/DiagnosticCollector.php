@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Diagnostics;
+namespace PHPSpellcheck\Core\Diagnostics;
 
-use Acme\Spellcheck\Model\Diagnostic;
-use Acme\Spellcheck\Model\DiagnosticCode;
-use Acme\Spellcheck\Model\Location;
+use PHPSpellcheck\Core\Model\Diagnostic;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Model\Location;
 
 /**
  * Shared, mutable sink for diagnostics. Long lived as a service: the runner

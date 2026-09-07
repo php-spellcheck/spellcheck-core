@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\TextFragment;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\TextFragment;
 
 /**
  * Splits the legacy pipe based pluralisation into independent fragments and

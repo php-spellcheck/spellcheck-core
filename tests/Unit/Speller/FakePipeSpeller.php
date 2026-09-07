@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Speller;
+namespace PHPSpellcheck\Core\Tests\Unit\Speller;
 
-use Acme\Spellcheck\Speller\PipeSpeller;
+use PHPSpellcheck\Core\Speller\PipeSpeller;
 
 /**
  * Drives PipeSpeller against tests/Fixtures/fake-speller.php.

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tokenizer;
+namespace PHPSpellcheck\Core\Tokenizer;
 
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\Word;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\Word;
 
 final class TokenizerRegistry
 {

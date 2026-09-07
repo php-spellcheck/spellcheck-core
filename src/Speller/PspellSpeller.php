@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Exception\UnsupportedLanguageException;
-use Acme\Spellcheck\Model\MisspellingType;
+use PHPSpellcheck\Core\Exception\UnsupportedLanguageException;
+use PHPSpellcheck\Core\Model\MisspellingType;
 
 /**
  * ext-pspell backend: no external process, but no word offsets either (which

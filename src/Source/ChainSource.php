@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Source;
+namespace PHPSpellcheck\Core\Source;
 
 final class ChainSource implements SourceInterface
 {

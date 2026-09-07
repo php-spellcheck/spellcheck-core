@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Icu;
+namespace PHPSpellcheck\Core\Tests\Unit\Icu;
 
-use Acme\Spellcheck\Exception\IcuSyntaxException;
-use Acme\Spellcheck\Icu\IcuMessageParser;
-use Acme\Spellcheck\Icu\IcuTextSpan;
+use PHPSpellcheck\Core\Exception\IcuSyntaxException;
+use PHPSpellcheck\Core\Icu\IcuMessageParser;
+use PHPSpellcheck\Core\Icu\IcuTextSpan;
 use PHPUnit\Framework\TestCase;
 
 final class IcuMessageParserTest extends TestCase

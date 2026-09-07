@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Php;
+namespace PHPSpellcheck\Core\Php;
 
-use Acme\Spellcheck\Model\TokenizerMode;
+use PHPSpellcheck\Core\Model\TokenizerMode;
 
 enum IdentifierKind: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Exception;
+namespace PHPSpellcheck\Core\Exception;
 
 final class SpellerProcessException extends RuntimeException
 {

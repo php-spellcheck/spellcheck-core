@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\LineIndex;
-use Acme\Spellcheck\Model\Location;
-use Acme\Spellcheck\Model\Misspelling;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Model\TokenizerMode;
-use Acme\Spellcheck\Speller\SpellerResult;
-use Acme\Spellcheck\Speller\SuggestionFormatter;
-use Acme\Spellcheck\Support\Utf8;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\LineIndex;
+use PHPSpellcheck\Core\Model\Location;
+use PHPSpellcheck\Core\Model\Misspelling;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Model\TokenizerMode;
+use PHPSpellcheck\Core\Speller\SpellerResult;
+use PHPSpellcheck\Core\Speller\SuggestionFormatter;
+use PHPSpellcheck\Core\Support\Utf8;
 
 /**
  * Turns a raw SpellerResult into a reportable Misspelling: resolves the

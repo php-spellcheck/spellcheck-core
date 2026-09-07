@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Report;
+namespace PHPSpellcheck\Core\Report;
 
-use Acme\Spellcheck\Exception\InvalidArgumentException;
+use PHPSpellcheck\Core\Exception\InvalidArgumentException;
 
 final class ReporterRegistry
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Dictionary;
+namespace PHPSpellcheck\Core\Dictionary;
 
 /**
  * A flat list of accepted words, optionally scoped to one language.

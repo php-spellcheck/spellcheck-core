@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Icu;
+namespace PHPSpellcheck\Core\Icu;
 
 /**
  * A textual branch extracted from an ICU message, with its character offset in

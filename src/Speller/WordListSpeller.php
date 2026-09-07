@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Speller;
+namespace PHPSpellcheck\Core\Speller;
 
-use Acme\Spellcheck\Dictionary\DictionaryInterface;
-use Acme\Spellcheck\Model\MisspellingType;
+use PHPSpellcheck\Core\Dictionary\DictionaryInterface;
+use PHPSpellcheck\Core\Model\MisspellingType;
 
 /**
  * Pure PHP backend: a word list is the only source of truth. No external

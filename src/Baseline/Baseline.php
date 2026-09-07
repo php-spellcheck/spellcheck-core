@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Baseline;
+namespace PHPSpellcheck\Core\Baseline;
 
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 final class Baseline
 {

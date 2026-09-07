@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Dictionary;
+namespace PHPSpellcheck\Core\Dictionary;
 
-use Acme\Spellcheck\Exception\InvalidArgumentException;
+use PHPSpellcheck\Core\Exception\InvalidArgumentException;
 
 /**
  * Loads word list files.

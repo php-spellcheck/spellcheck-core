@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Dictionary;
+namespace PHPSpellcheck\Core\Dictionary;
 
 /**
  * Resolves an application locale ("it", "en", "pt_BR") to a system dictionary

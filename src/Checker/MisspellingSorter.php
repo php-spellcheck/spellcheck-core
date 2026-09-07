@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 /**
  * Deterministic ordering: path, line, column, word, context. Two identical

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Checker;
+namespace PHPSpellcheck\Core\Checker;
 
-use Acme\Spellcheck\Model\Diagnostic;
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Model\Diagnostic;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 /**
  * @psalm-immutable

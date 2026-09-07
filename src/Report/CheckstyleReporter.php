@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Report;
+namespace PHPSpellcheck\Core\Report;
 
-use Acme\Spellcheck\Checker\RunResult;
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Checker\RunResult;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 final class CheckstyleReporter implements ReporterInterface
 {

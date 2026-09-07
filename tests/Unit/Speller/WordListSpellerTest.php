@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Speller;
+namespace PHPSpellcheck\Core\Tests\Unit\Speller;
 
-use Acme\Spellcheck\Dictionary\WordListDictionary;
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Speller\SpellerResult;
-use Acme\Spellcheck\Speller\WordListSpeller;
+use PHPSpellcheck\Core\Dictionary\WordListDictionary;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Speller\SpellerResult;
+use PHPSpellcheck\Core\Speller\WordListSpeller;
 use PHPUnit\Framework\TestCase;
 
 final class WordListSpellerTest extends TestCase

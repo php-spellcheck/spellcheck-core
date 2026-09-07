@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Report;
+namespace PHPSpellcheck\Core\Tests\Unit\Report;
 
-use Acme\Spellcheck\Checker\RunResult;
-use Acme\Spellcheck\Checker\RunStatistics;
-use Acme\Spellcheck\Model\Diagnostic;
-use Acme\Spellcheck\Model\DiagnosticCode;
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\Location;
-use Acme\Spellcheck\Model\Misspelling;
-use Acme\Spellcheck\Model\MisspellingType;
-use Acme\Spellcheck\Report\BufferedWriter;
-use Acme\Spellcheck\Report\GithubReporter;
+use PHPSpellcheck\Core\Checker\RunResult;
+use PHPSpellcheck\Core\Checker\RunStatistics;
+use PHPSpellcheck\Core\Model\Diagnostic;
+use PHPSpellcheck\Core\Model\DiagnosticCode;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\Location;
+use PHPSpellcheck\Core\Model\Misspelling;
+use PHPSpellcheck\Core\Model\MisspellingType;
+use PHPSpellcheck\Core\Report\BufferedWriter;
+use PHPSpellcheck\Core\Report\GithubReporter;
 use PHPUnit\Framework\TestCase;
 
 final class GithubReporterTest extends TestCase

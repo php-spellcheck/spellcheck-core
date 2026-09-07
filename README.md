@@ -4,7 +4,7 @@ Spell checking engine for PHP code and translation catalogues.
 
 This is the framework agnostic core. For the Symfony integration (commands,
 configuration, Translator support) use
-[`acme/spellcheck-bundle`](https://github.com/acme/spellcheck-bundle).
+[`php-spellcheck/spellcheck`](https://github.com/php-spellcheck/spellcheck-bundle).
 
 - PHP ≥ 8.1
 - No mandatory `ext-intl` (the ICU parser is built in)
@@ -23,34 +23,34 @@ the words to whichever backend you have.
 ## Install
 
 ```bash
-composer require --dev acme/spellcheck
+composer require --dev php-spellcheck/spellcheck
 ```
 
 ## Quick start
 
 ```php
-use Acme\Spellcheck\Checker\MisspellingFactory;
-use Acme\Spellcheck\Checker\RunConfiguration;
-use Acme\Spellcheck\Checker\RunStatisticsCollector;
-use Acme\Spellcheck\Checker\SpellcheckRunner;
-use Acme\Spellcheck\Diagnostics\DiagnosticCollector;
-use Acme\Spellcheck\Dictionary\BuiltinDictionaries;
-use Acme\Spellcheck\Dictionary\DictionaryLoader;
-use Acme\Spellcheck\Dictionary\LocaleDictionaryMap;
-use Acme\Spellcheck\Filter\DeduplicationFilter;
-use Acme\Spellcheck\Filter\DictionaryFilter;
-use Acme\Spellcheck\Filter\FilterChain;
-use Acme\Spellcheck\Php\IdentifierKind;
-use Acme\Spellcheck\Processor\HtmlProcessor;
-use Acme\Spellcheck\Processor\PlaceholderProcessor;
-use Acme\Spellcheck\Processor\ProcessorChain;
-use Acme\Spellcheck\Report\BufferedWriter;
-use Acme\Spellcheck\Report\TableReporter;
-use Acme\Spellcheck\Source\PhpFileSource;
-use Acme\Spellcheck\Speller\HunspellSpeller;
-use Acme\Spellcheck\Tokenizer\IdentifierSplitter;
-use Acme\Spellcheck\Tokenizer\ProseTokenizer;
-use Acme\Spellcheck\Tokenizer\TokenizerRegistry;
+use PHPSpellcheck\Core\Checker\MisspellingFactory;
+use PHPSpellcheck\Core\Checker\RunConfiguration;
+use PHPSpellcheck\Core\Checker\RunStatisticsCollector;
+use PHPSpellcheck\Core\Checker\SpellcheckRunner;
+use PHPSpellcheck\Core\Diagnostics\DiagnosticCollector;
+use PHPSpellcheck\Core\Dictionary\BuiltinDictionaries;
+use PHPSpellcheck\Core\Dictionary\DictionaryLoader;
+use PHPSpellcheck\Core\Dictionary\LocaleDictionaryMap;
+use PHPSpellcheck\Core\Filter\DeduplicationFilter;
+use PHPSpellcheck\Core\Filter\DictionaryFilter;
+use PHPSpellcheck\Core\Filter\FilterChain;
+use PHPSpellcheck\Core\Php\IdentifierKind;
+use PHPSpellcheck\Core\Processor\HtmlProcessor;
+use PHPSpellcheck\Core\Processor\PlaceholderProcessor;
+use PHPSpellcheck\Core\Processor\ProcessorChain;
+use PHPSpellcheck\Core\Report\BufferedWriter;
+use PHPSpellcheck\Core\Report\TableReporter;
+use PHPSpellcheck\Core\Source\PhpFileSource;
+use PHPSpellcheck\Core\Speller\HunspellSpeller;
+use PHPSpellcheck\Core\Tokenizer\IdentifierSplitter;
+use PHPSpellcheck\Core\Tokenizer\ProseTokenizer;
+use PHPSpellcheck\Core\Tokenizer\TokenizerRegistry;
 
 $dictionary = (new DictionaryLoader())->loadAll(
     BuiltinDictionaries::paths(['technical', 'php', 'symfony']),

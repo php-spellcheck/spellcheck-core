@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Filter;
+namespace PHPSpellcheck\Core\Filter;
 
-use Acme\Spellcheck\Model\Misspelling;
+use PHPSpellcheck\Core\Model\Misspelling;
 
 /**
  * Collapses the same word reported twice at the same position, which happens

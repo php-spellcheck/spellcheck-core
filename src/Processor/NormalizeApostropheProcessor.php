@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Processor;
+namespace PHPSpellcheck\Core\Processor;
 
-use Acme\Spellcheck\Model\OffsetMap;
-use Acme\Spellcheck\Model\TextFragment;
+use PHPSpellcheck\Core\Model\OffsetMap;
+use PHPSpellcheck\Core\Model\TextFragment;
 
 /**
  * Normalises typographic apostrophes and non breaking spaces. The replacement

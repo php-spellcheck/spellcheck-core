@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Support;
+namespace PHPSpellcheck\Core\Support;
 
 /**
  * Byte offsets returned by PREG_OFFSET_CAPTURE must be converted to character

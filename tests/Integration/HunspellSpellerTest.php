@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Integration;
+namespace PHPSpellcheck\Core\Tests\Integration;
 
-use Acme\Spellcheck\Model\Word;
-use Acme\Spellcheck\Speller\HunspellSpeller;
-use Acme\Spellcheck\Speller\SpellerResult;
+use PHPSpellcheck\Core\Model\Word;
+use PHPSpellcheck\Core\Speller\HunspellSpeller;
+use PHPSpellcheck\Core\Speller\SpellerResult;
 use PHPUnit\Framework\TestCase;
 
 /**

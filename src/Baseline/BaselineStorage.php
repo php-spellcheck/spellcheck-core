@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Baseline;
+namespace PHPSpellcheck\Core\Baseline;
 
-use Acme\Spellcheck\Exception\BaselineSchemaException;
-use Acme\Spellcheck\Version;
+use PHPSpellcheck\Core\Exception\BaselineSchemaException;
+use PHPSpellcheck\Core\Version;
 
 final class BaselineStorage
 {

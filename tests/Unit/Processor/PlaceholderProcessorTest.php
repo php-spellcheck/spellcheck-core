@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Spellcheck\Tests\Unit\Processor;
+namespace PHPSpellcheck\Core\Tests\Unit\Processor;
 
-use Acme\Spellcheck\Model\FragmentContext;
-use Acme\Spellcheck\Model\TextFragment;
-use Acme\Spellcheck\Processor\PlaceholderProcessor;
+use PHPSpellcheck\Core\Model\FragmentContext;
+use PHPSpellcheck\Core\Model\TextFragment;
+use PHPSpellcheck\Core\Processor\PlaceholderProcessor;
 use PHPUnit\Framework\TestCase;
 
 final class PlaceholderProcessorTest extends TestCase

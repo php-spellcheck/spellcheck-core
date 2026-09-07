@@ -50,7 +50,7 @@ jobs:
                   dependency-versions: ${{ matrix.deps }}
 
             - name: Sanity check without dependencies
-              run: php packages/spellcheck/tests/smoke.php
+              run: php tests/smoke.php
 
             - name: Unit and functional tests
               run: vendor/bin/phpunit

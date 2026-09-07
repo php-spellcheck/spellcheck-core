@@ -1,4 +1,4 @@
-# acme/spellcheck
+# php-spellcheck/spellcheck
 
 Spell checking engine for PHP code and translation catalogues.
 

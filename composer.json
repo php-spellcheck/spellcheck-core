@@ -25,7 +25,7 @@
     },
     "suggest": {
         "ext-pspell": "To use the pspell backend without spawning external processes",
-        "symfony/translation": "To check Symfony translation catalogues (see acme/spellcheck-bundle)"
+        "symfony/translation": "To check Symfony translation catalogues (see php-spellcheck/spellcheck-bundle)"
     },
     "autoload": {
         "psr-4": { "PHPSpellcheck\\Core\\": "src/" }

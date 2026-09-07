@@ -1,5 +1,5 @@
 {
-    "name": "php-spellcheck/spellcheck",
+    "name": "php-spellcheck/spellcheck-core",
     "description": "Framework-agnostic PHP spell checking engine for source code and translation files. Hunspell, Aspell, pspell or pure PHP backends, character-accurate positions, PSR-6 caching.",
     "type": "library",
     "keywords": ["psr-6", "php-parser", "spell-checker", "spellcheck", "spelling", "php", "hunspell", "aspell", "translations", "i18n", "l10n", "code-quality", "static-analysis", "linter", "typo", "icu", "continuous-integration", "developer-tools"],

@@ -23,7 +23,7 @@ the words to whichever backend you have.
 ## Install
 
 ```bash
-composer require --dev php-spellcheck/spellcheck
+composer require --dev php-spellcheck/spellcheck-core
 ```
 
 ## Quick start

@@ -13,6 +13,7 @@ use PHPSpellcheck\Core\Model\TextFragment;
 use PHPSpellcheck\Core\Model\Word;
 use PHPSpellcheck\Core\Processor\ProcessorChain;
 use PHPSpellcheck\Core\Source\SourceInterface;
+use PHPSpellcheck\Core\Speller\CachingSpeller;
 use PHPSpellcheck\Core\Speller\SpellerInterface;
 use PHPSpellcheck\Core\Tokenizer\TokenizerRegistry;
 use Psr\Log\LoggerInterface;
@@ -137,7 +138,11 @@ final class SpellcheckRunner
      */
     private function flush(string $language, array $batch, array $fragmentsById, RunConfiguration $config): iterable
     {
-        foreach ($this->speller->check($batch, $language, $config->withSuggestions) as $result) {
+        $speller = ($this->speller instanceof CachingSpeller && !$config->useCache)
+            ? $this->speller->getInner()
+            : $this->speller;
+
+        foreach ($speller->check($batch, $language, $config->withSuggestions) as $result) {
             $fragment = $fragmentsById[$result->word->id] ?? null;
 
             if (null === $fragment) {

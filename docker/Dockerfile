@@ -1,5 +1,7 @@
 # Development image: PHP plus every spell checking backend and the dictionaries
 # the integration tests need.
+# pspell is bundled up to PHP 8.3 and lives in PECL from PHP 8.4 on, hence the
+# fallback in the extension step below.
 ARG PHP_VERSION=8.3
 FROM php:${PHP_VERSION}-cli-bookworm
 
@@ -19,7 +21,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         hunspell-en-gb \
         hunspell-de-de \
         hunspell-fr \
-    && docker-php-ext-install -j"$(nproc)" mbstring pspell \
+    && docker-php-ext-install -j"$(nproc)" mbstring \
+    && { docker-php-ext-install -j"$(nproc)" pspell \
+        || { pecl install pspell && docker-php-ext-enable pspell; }; } \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer

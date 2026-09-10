@@ -49,7 +49,7 @@ For the Symfony integration (console commands, bundle configuration,
 
 ## Requirements
 
-- PHP ≥ 8.1 with `ext-mbstring`
+- PHP ≥ 8.1 with `ext-mbstring` (tested up to PHP 8.5)
 - `nikic/php-parser` 4 or 5
 - No mandatory `ext-intl` (the ICU parser is built in)
 - No mandatory system binary (the pure PHP `wordlist` backend always works)

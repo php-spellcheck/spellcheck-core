@@ -22,6 +22,7 @@ jobs:
                     - { php: '8.2', deps: highest }
                     - { php: '8.3', deps: highest }
                     - { php: '8.4', deps: highest }
+                    - { php: '8.5', deps: highest }
                     - { php: '8.3', deps: highest, parser: '^4.18' }
 
         steps:

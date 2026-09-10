@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- PHP 8.5 support: the CI matrix now runs the unit, functional and integration
+  suites on PHP 8.5.
+
 ## [1.0.0] - 2026-09-07
 
 ### Added

@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-10
+
 ### Added
 
 - PHP 8.5 support: the CI matrix now runs the unit, functional and integration
   suites on PHP 8.5.
+- Symfony 8 support: `symfony/finder`, `symfony/process`, `symfony/filesystem`
+  and `symfony/yaml` now accept `^8.0` alongside `^5.4`, `^6.4` and `^7.0`.
 
 ## [1.0.0] - 2026-09-07
 
@@ -38,5 +42,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fingerprint::SCHEMA_VERSION` is `v1` and `BaselineStorage::SCHEMA` is `1`.
   Changing either requires a major release and a baseline regeneration.
 
-[Unreleased]: https://github.com/php-spellcheck/spellcheck-core/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/php-spellcheck/spellcheck-core/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/php-spellcheck/spellcheck-core/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/php-spellcheck/spellcheck-core/releases/tag/v1.0.0

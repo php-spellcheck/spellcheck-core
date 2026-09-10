@@ -50,7 +50,7 @@
         "sort-packages": true
     },
     "extra": {
-        "branch-alias": { "dev-main": "1.1-dev" }
+        "branch-alias": { "dev-main": "1.2-dev" }
     },
     "minimum-stability": "stable",
     "prefer-stable": true

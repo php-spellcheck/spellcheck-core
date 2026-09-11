@@ -1,7 +1,7 @@
 # PHP Spellcheck Core — spell checker for PHP code and translation files
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/php-spellcheck/spellcheck-core/main/.github/assets/social-preview.png" alt="PHP Spellcheck Core — spell check PHP code and translation catalogues" width="880">
+  <img src="https://raw.githubusercontent.com/php-spellcheck/spellcheck-core/main/.github/assets/social-preview.png?v=2" alt="PHP Spellcheck Core — spell check PHP code and translation catalogues" width="880">
 </p>
 
 [![CI](https://github.com/php-spellcheck/spellcheck-core/actions/workflows/ci.yaml/badge.svg)](https://github.com/php-spellcheck/spellcheck-core/actions/workflows/ci.yaml)
